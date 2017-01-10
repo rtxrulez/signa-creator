@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style type="text/css">
-        @font-face {
-            font-family: "Custom";
-            src: url("file:///home/p1ratrulezzz/www/hosts/node-vkbot/data/signa/fonts/Annabelle.ttf") format("truetype");
-        }
-
         div.text-layer span {
             margin: 1px;
             float: left;
@@ -26,10 +21,13 @@
             -webkit-transform: rotate(24deg);
             overflow: hidden;
         }
+        .clearfix {
+            clear: both;
+        }
     </style>
 </head>
 <body>
-<img id="signa" src="file:///home/p1ratrulezzz/www/hosts/node-vkbot/data/signa/kristina/main.png">
+<img id="signa" src="">
 <div id="text-layer1" class="text-layer text-layer1">[T]iger.DCE
     <!--<span class="item-1">&nbsp;</span>
     <span class="item-2">Я</span>
@@ -42,10 +40,23 @@
     <span class="item-9">&nbsp;</span>
     <span class="item-10">&nbsp;</span>-->
 </div>
-<input id="texter" type="text">
+<div class="clearfix"></div>
+Введи свой текст: <input id="texter" type="text">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
     (function($) {
+        function base_url() {
+            let arr = window.location.pathname.split('/');
+            arr.pop();
+            return arr.join('/');
+        }
+
+        let imagePath = base_url() + '/kristina/main.png';
+        let fontPath = base_url() + '/fonts/Annabelle.ttf';
+
+        $('#signa').attr('src', imagePath);
+        $('head').append('<style type="text/css">@font-face { font-family:"Custom"; src: url("'+fontPath+'") format("truetype"); }</style>');
+
         $(function() {
             $('#texter').bind('keyup', function(e) {
                 let $this = $(this);
