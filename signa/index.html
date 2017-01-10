@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        @font-face {
+            font-family: "Custom";
+            src: url("file:///home/p1ratrulezzz/www/hosts/node-vkbot/data/signa/fonts/Annabelle.ttf") format("truetype");
+        }
+
+        div.text-layer span {
+            margin: 1px;
+            float: left;
+        }
+
+        div.text-layer1 {
+            font-family: Custom;
+            font-size: 35pt;
+            position: absolute;
+            top: 392px;
+            left: 24px;
+            width: 316px;
+            height: 80px;
+            text-align: center;
+            -webkit-transform: rotate(24deg);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<img id="signa" src="file:///home/p1ratrulezzz/www/hosts/node-vkbot/data/signa/kristina/main.png">
+<div id="text-layer1" class="text-layer text-layer1">[T]iger.DCE
+    <!--<span class="item-1">&nbsp;</span>
+    <span class="item-2">Я</span>
+    <span class="item-3">&nbsp;</span>
+    <span class="item-4">Ж</span>
+    <span class="item-5">е</span>
+    <span class="item-6">н</span>
+    <span class="item-7">я</span>
+    <span class="item-8">&nbsp;</span>
+    <span class="item-9">&nbsp;</span>
+    <span class="item-10">&nbsp;</span>-->
+</div>
+<input id="texter" type="text">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    (function($) {
+        $(function() {
+            $('#texter').bind('keyup', function(e) {
+                let $this = $(this);
+                let textBlock = $('#text-layer1');
+                let text = $this.val();
+                textBlock.html(text); return;
+                if (text.length > 0) {
+                    for (let i=0; i<text.length; i++) {
+                        let el = $('<span></span>');
+                        el.attr('class', 'item-' + String(Number(i)+1));
+                        el.html(text[i] == undefined || text[i] == ' ' ? '&nbsp;' : text[i]);
+
+                        textBlock.append(el);
+                        //el.appendTo(textBlock);
+                    }
+                }
+            });
+        });
+    }) (jQuery)
+</script>
+</body>
+</html>
