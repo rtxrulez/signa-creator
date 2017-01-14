@@ -1,0 +1,17 @@
+div.text-layer span {
+    margin: 1px;
+    float: left;
+}
+
+div.text-layer1 {
+    font-family: Custom;
+    font-size: 35pt;
+    position: absolute;
+    top: 392px;
+    left: 24px;
+    width: 316px;
+    height: 80px;
+    text-align: center;
+    -webkit-transform: rotate(24deg);
+    overflow: hidden;
+}
