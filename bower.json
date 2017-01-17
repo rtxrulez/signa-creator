@@ -1,0 +1,21 @@
+{
+  "name": "signa-creator",
+  "homepage": "https://github.com/rtxrulez/signa-creator",
+  "authors": [],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "dom-to-image": "^2.5.2",
+    "file-saver": "^1.3.3",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap": "^3.3.7"
+  }
+}
