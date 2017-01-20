@@ -1,3 +1,44 @@
 body {
   background-color: #fff;
 }
+.text-layer span {
+    margin: 1px;
+    float: left;
+}
+
+.text-layer1 {
+    font-family: Custom;
+    font-size: 35pt;
+    position: absolute;
+    top: 285px;
+    left: 241px;
+    width: 181px;
+    height: 55px;
+    text-align: center;
+    -webkit-transform: rotate(-28deg);
+    /*border: 1px solid black;*/
+    color: #6cbdce;
+}
+
+.text-layer2 {
+    font-family: Custom;
+    font-size: 26pt;
+    position: absolute;
+    top: 329px;
+    left: 278px;
+    width: 181px;
+    height: 51px;
+    text-align: center;
+    -webkit-transform: rotate(-28deg);
+    /*border: 1px solid black;*/
+    color: #6cbdce;
+}
+
+#signa-wrapper {
+    width: 640px;
+    margin: 0 auto;
+    position: relative;
+}
+.panel-signa {
+  display: inline-block;
+}
