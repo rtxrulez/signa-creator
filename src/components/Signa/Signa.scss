@@ -1,3 +1,21 @@
-body {
-    color: green;
+.signa {
+    &__content {
+        width: 600px;
+        position: relative;
+    }
+
+    &__img {
+        display: block;
+        max-width: 100%;
+    }
+
+    &__text {
+        position: absolute;
+        z-index: 2;
+
+        &--str1 {
+            left: 100px;
+            right: 100px;
+        }
+    }
 }
