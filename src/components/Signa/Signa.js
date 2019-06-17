@@ -11,7 +11,7 @@ function generateToImg(node) {
       let resultNodeHref = document.getElementById("result-href")
       img.src = dataUrl;
       resultNodeHref.href = dataUrl
-      resultNode.appendChild(img)
+      resultNode.innerHTML = img.toString()
 
     })
     .catch(function(error) {
