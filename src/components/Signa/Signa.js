@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import domtoimage from "dom-to-image";
 import "./Signa.scss";
 
-function getName() {
+function getName(type) {
   let d = new Date();
   return (
     "signa_" +
@@ -11,22 +11,30 @@ function getName() {
     d.getDate() +
     "_" +
     (d.getTime() % (24 * 1000)) +
-    ".jpg".toString()
+    "." +
+    type.toString()
   );
 }
 
-function generateToImg(node) {
-  domtoimage
-    .toJpeg(node, {
-      quality: 1,
-      width: node.offsetWidth,
-      height: node.offsetHeight,
-      bgcolor: "#FF"
-    })
+function generateToImg(node, typeImg) {
+  let typeImgStr = "";
+
+  if (typeImg === "jpg") {
+    typeImgStr = "toJpeg";
+  } else {
+    typeImgStr = "toPng";
+  }
+
+  domtoimage[typeImgStr](node, {
+    quality: 1,
+    width: node.offsetWidth,
+    height: node.offsetHeight,
+    bgcolor: "#FF"
+  })
     .then(function(dataUrl) {
       let link = document.createElement("a");
 
-      link.download = getName();
+      link.download = getName(typeImg);
       link.href = dataUrl;
       link.click();
     })
@@ -39,7 +47,8 @@ class Signa extends Component {
     super(props);
     this.state = {
       text1: "Im",
-      text2: "Vica"
+      text2: "Vica",
+      typeImg: "jpg"
     };
   }
   componentDidMount() {
@@ -61,13 +70,20 @@ class Signa extends Component {
     }
   };
 
+  selectFormat = e => {
+    this.setState({
+      typeImg: e.target.value
+    });
+  };
+
   generate = () => {
     const node = document.getElementById("content");
-    generateToImg(node);
+    const typeImg = this.state.typeImg;
+    generateToImg(node, typeImg);
   };
 
   render() {
-    const { text1, text2 } = this.state;
+    const { text1, text2, typeImg } = this.state;
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
@@ -99,10 +115,19 @@ class Signa extends Component {
               />
             </label>
             <hr />
-            <button className="btn btn-success" onClick={this.generate}>
-              Скачать
-            </button>
-
+            <div className="form-line">
+              <button className="btn btn-success" onClick={this.generate}>
+                Скачать
+              </button>
+              <select
+                value={typeImg}
+                onChange={this.selectFormat}
+                className="form-control"
+              >
+                <option value="jpg">jpg</option>
+                <option value="png">png</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>

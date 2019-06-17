@@ -56,3 +56,10 @@ hr {
   margin-left: -20px;
   margin-right: -20px;
 }
+
+.form-line {
+  display: flex;
+  select, input, button {
+    margin-right: 15px;
+  }
+}
