@@ -1,39 +1,70 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
-  entry: "./src/index.js",
-  output: {
-    path: path.join(__dirname, "/dist"),
-    filename: "index_bundle.js"
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
+module.exports = (env, argv) => {
+  const devMode = argv.mode === "development"
+
+  return {
+    entry: "./src/index.js",
+    devtool: devMode ? "sourcemap" : false,
+    output: {
+      path: path.join(__dirname, "/dist"),
+      filename: "index_bundle.js"
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
+          test: /\.(sass|scss|css)$/,
+          use: [
+            "style-loader",
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: "../",
+                hmr: devMode
+              }
+            },
+            "css-loader",
+            {
+              loader: "postcss-loader",
+              options: {
+                ident: "postcss",
+                plugins: loader => [
+                  require('autoprefixer')(),
+                  require("cssnano")() 
+                ]
+              }
+            },
+            "sass-loader"
+          ]
         }
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    }),
-    new CopyWebpackPlugin([
-      { from: "./src/images", to: "./images" }
-    ])
-  ],
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: false,
-    port: 3000
-  }
+      ]
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./src/index.html"
+      }),
+      new CopyWebpackPlugin([{ from: "./src/images", to: "./images" }]),
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: "[name].css",
+        chunkFilename: "[id].css"
+      })
+    ],
+    devServer: {
+      contentBase: path.join(__dirname, "dist"),
+      compress: false,
+      port: 3000
+    }
+  };
 };
