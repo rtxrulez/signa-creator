@@ -2,17 +2,33 @@ import React, { Component } from "react";
 import domtoimage from "dom-to-image";
 import "./Signa.scss";
 
+function getName() {
+  let d = new Date();
+  return (
+    "signa_" +
+    d.getFullYear() +
+    d.getMonth() +
+    d.getDate() +
+    "_" +
+    (d.getTime() % (24 * 1000)) +
+    ".jpg".toString()
+  );
+}
+
 function generateToImg(node) {
   domtoimage
-    .toPng(node)
+    .toJpeg(node, {
+      quality: 1,
+      width: node.offsetWidth,
+      height: node.offsetHeight,
+      bgcolor: "#FF"
+    })
     .then(function(dataUrl) {
-      let img = new Image();
-      let resultNode = document.getElementById("signa-result");
-      let resultNodeHref = document.getElementById("result-href")
-      img.src = dataUrl;
-      resultNodeHref.href = dataUrl
-      resultNode.innerHTML = img.toString()
+      let link = document.createElement("a");
 
+      link.download = getName();
+      link.href = dataUrl;
+      link.click();
     })
     .catch(function(error) {
       console.error("oops, something went wrong!", error);
@@ -27,11 +43,10 @@ class Signa extends Component {
     };
   }
   componentDidMount() {
-    setTimeout(() => {
-      var node = document.getElementById("content");
-
-      generateToImg(node);
-    }, 50);
+    // setTimeout(() => {
+    //   var node = document.getElementById("content");
+    //   generateToImg(node);
+    // }, 50);
   }
 
   inputText = e => {
@@ -83,16 +98,13 @@ class Signa extends Component {
                 defaultValue={text2}
               />
             </label>
-
-            <button className="btn btn-primary" onClick={this.generate}>
-              Сгенерить
+            <hr />
+            <button className="btn btn-success" onClick={this.generate}>
+              Скачать
             </button>
-            <hr/>
 
-            <a href="" id="result-href">Скачать</a>
           </div>
         </div>
-        <div id="signa-result" />
       </div>
     );
   }

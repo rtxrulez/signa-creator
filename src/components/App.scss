@@ -25,9 +25,7 @@ body {
   position: relative;
   display: inline-block;
   height: 40px;
-  padding: 0 35px;
-  background-color: #49c5b6;
-  color: #fff;
+  padding: 0 20px;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -35,4 +33,26 @@ body {
   border: none;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+}
+
+.btn-success {
+  background-color: #49c5b6;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #42AB9E;
+  }
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-bottom: 1px solid #E6EAEA;
+}
+
+.signa hr {
+  margin-left: -20px;
+  margin-right: -20px;
 }
