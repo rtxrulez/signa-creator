@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/App.css";
+import "./App.scss";
 import Signa from "./Signa/Signa";
 
 class App extends Component {
