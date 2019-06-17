@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import domtoimage from 'dom-to-image';
+import './Signa.scss'
 
 class Signa extends Component {
     componentDidMount() {
