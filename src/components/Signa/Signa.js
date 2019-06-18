@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import SignaCreator from "../SignaCreator/SignaCreator"
-import ElementToImg from "../ElementToImg/ElementToImg"
+import { Link } from "react-router-dom";
+import SignaCreator from "../SignaCreator/SignaCreator";
+import ElementToImg from "../ElementToImg/ElementToImg";
 import "./Signa.scss";
-
 
 class Signa extends Component {
   constructor(props) {
@@ -40,14 +40,18 @@ class Signa extends Component {
 
   render() {
     const { text1, text2, typeImg } = this.state;
-    const { name } = this.props
+    const { name } = this.props;
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
         <p> Создайте свою картинку, скачайте и го работать!</p>
         <div className="signa">
-
-          <SignaCreator name={name} text1={text1} text2={text2} type={typeImg}></SignaCreator>
+          <SignaCreator
+            name={name}
+            text1={text1}
+            text2={text2}
+            type={typeImg}
+          />
           {/* <SignaCreator name={fileName} text1={text1} text2={text2} type="jpg"></SignaCreator> */}
 
           <div className="signa__form">
@@ -71,18 +75,28 @@ class Signa extends Component {
               />
             </label>
             <hr />
-            <div className="form-line">
-              <button className="btn btn-success" onClick={this.handleGenerate}>
-                Скачать
-              </button>
-              <select
-                value={typeImg}
-                onChange={this.selectFormat}
-                className="form-control"
-              >
-                <option value="jpg">jpg</option>
-                <option value="png">png</option>
-              </select>
+            <div className="form-line form-line-between">
+              <div className="d-f j-b">
+                <button
+                  className="btn btn-success"
+                  onClick={this.handleGenerate}
+                >
+                  Скачать
+                </button>
+                <select
+                  value={typeImg}
+                  onChange={this.selectFormat}
+                  className="form-control"
+                >
+                  <option value="jpg">jpg</option>
+                  <option value="png">png</option>
+                </select>
+              </div>
+              <div>
+                <Link to="/" className="btn btn-danger">
+                  Назад
+                </Link>
+              </div>
             </div>
           </div>
         </div>

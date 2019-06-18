@@ -8,11 +8,17 @@ class SignaList extends Component {
     this.state = {};
   }
   render() {
-    return <div className="signa">
+    return <div className="signaList">
       <h1>Select Signa Create</h1>
       <div className="signaList__list">
-        <Link to="/vika" className="signa__item">Vika</Link>
-        <Link to="/nasty" className="signa__item">Nasty</Link>
+        <Link to="/vika" className="signaList__item">
+          <img src="./images/vika.png" className="signaList__img" alt="Вика"/>
+          <h2 className="signaList__text">Вика</h2>
+        </Link>
+        <Link to="/nasty" className="signaList__item">
+          <img src="./images/nasty.png" className="signaList__img" alt="Настя"/>
+          <h2 className="signaList__text">Настя</h2>
+        </Link>
       </div>
     </div>;
   }

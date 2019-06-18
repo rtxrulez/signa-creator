@@ -35,6 +35,8 @@ body {
   border: none;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  line-height: 2.7;
 }
 
 .btn-success {
@@ -45,6 +47,17 @@ body {
   &:focus {
     color: #fff;
     background-color: #42AB9E;
+  }
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: darken(#dc3545, 0.5)
   }
 }
 
@@ -64,4 +77,17 @@ hr {
   select, input, button {
     margin-right: 15px;
   }
+}
+
+.form-line-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-f {
+  display: flex;
+}
+
+.j-b {
+  justify-content: space-between
 }
