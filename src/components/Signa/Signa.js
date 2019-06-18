@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import domtoimage from "dom-to-image";
+import Draggable from "react-draggable";
 import "./Signa.scss";
 
 function getName(type) {
@@ -48,25 +49,10 @@ class Signa extends Component {
     this.state = {
       text1: "Im",
       text2: "Vica",
-      typeImg: "jpg",
-      posElem: {
-        v1: {
-          top: 187,
-          left: 148
-        },
-        v2: {
-          top: 212,
-          left: 154
-        }
-      }
+      typeImg: "jpg"
     };
   }
-  componentDidMount() {
-    // setTimeout(() => {
-    //   var node = document.getElementById("content");
-    //   generateToImg(node);
-    // }, 50);
-  }
+  componentDidMount() {}
 
   inputText = e => {
     if (e.target.id === "text1") {
@@ -86,26 +72,6 @@ class Signa extends Component {
     });
   };
 
-  handleDragStart = (e) => {
-    console.log('e', e.target)
-  }
-
-  handleDragEnd = (e, ui) => {
-    let newPosLeft = Math.abs(e.clientX - e.target.offsetLeft - 182)
-    let newPosTop = Math.abs(e.clientY - e.target.offsetTop - 102)
-    // console.log('eee', e.target.getBoundingClientRect())
-    // console.log('left', newPosLeft)
-    this.setState({
-      posElem: {
-        ...this.state.posElem,
-        v1: {
-          left: newPosLeft,
-          top: newPosTop
-        }
-      }
-    })
-  }
-
   generate = () => {
     const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
@@ -114,11 +80,6 @@ class Signa extends Component {
 
   render() {
     const { text1, text2, typeImg } = this.state;
-    const {v1,  v2} = this.state.posElem
-    const styleV1 = {
-      top: v1.top + 'px',
-      left: v1.left + 'px'
-    }
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
@@ -126,14 +87,17 @@ class Signa extends Component {
         <div className="signa">
           <div className="signa__content" id="content">
             <img src="./images/vika.png" alt="" className="signa__img" />
-            <div
-              style={styleV1}
-              className="signa__textContent signa__textContent--v1" draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
-              <div className="signa__text">{text1}</div>
-            </div>
-            <div className="signa__textContent signa__textContent--v2">
-              <div className="signa__text">{text2}</div>
-            </div>
+            <Draggable defaultClassNameDragging="drag">
+              <div className="signa__textContent signa__textContent--v1">
+                <div className="signa__text">{text1}</div>
+              </div>
+            </Draggable>
+
+            <Draggable>
+              <div className="signa__textContent signa__textContent--v2">
+                <div className="signa__text">{text2}</div>
+              </div>
+            </Draggable>
           </div>
           <div className="signa__form">
             <label className="signa__label">

@@ -17,7 +17,7 @@
     z-index: 2;
     width: 180px;
     height: 100px;
-    border: 1px solid greenyellow;
+    cursor: move;
 
     &--v1 {
       top: 187px;
@@ -38,6 +38,7 @@
     overflow: hidden;
     white-space: nowrap;
     max-width: 186px;
+    border: 1px solid transparent
   }
 
   &__form {
@@ -61,4 +62,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.drag {
+  .signa__text {
+    box-shadow: 0px 0px 8px 0 #49c5b6
+  }
 }
