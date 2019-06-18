@@ -18,6 +18,10 @@ class App extends Component {
             path="/vika"
             render={props => <Signa {...props} name="vika" />}
           />
+          <Route
+            path="/ogo"
+            render={props => <Signa {...props} name="ogo" />}
+          />
         </HashRouter>
       </div>
     );

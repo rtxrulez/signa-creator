@@ -19,6 +19,10 @@ class SignaList extends Component {
           <img src="./images/nasty.png" className="signaList__img" alt="Настя"/>
           <h2 className="signaList__text">Настя</h2>
         </Link>
+        <Link to="/ogo" className="signaList__item">
+          <img src="./images/ogo.png" className="signaList__img" alt="Ого"/>
+          <h2 className="signaList__text">Ого</h2>
+        </Link>
       </div>
     </div>;
   }

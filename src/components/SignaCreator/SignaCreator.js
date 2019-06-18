@@ -22,7 +22,7 @@ class SignaCreator extends Component {
             </div>
           </Draggable>
 
-          <Draggable>
+          <Draggable defaultClassNameDragging="drag">
             <div className="SignaCreator__textContent SignaCreator__textContent--v2">
               <div className="SignaCreator__text">{text2}</div>
             </div>

@@ -13,8 +13,6 @@
   &__textContent {
     position: absolute;
     z-index: 2;
-    width: 180px;
-    height: 100px;
     cursor: move;
   }
 
@@ -26,7 +24,7 @@
     overflow: hidden;
     white-space: nowrap;
     max-width: 186px;
-    border: 1px solid transparent
+    border: 1px solid transparent;
   }
 }
 
@@ -34,15 +32,19 @@
   .SignaCreator__textContent--v1 {
     top: 62%;
     left: 10%;
+
     .SignaCreator__text {
-      transform: rotate(24deg)
+      transform: rotate(24deg);
+      width: 250px;
     }
   }
   .SignaCreator__textContent--v2 {
-    top: 67%;
+    top: 68%;
     left: 6%;
+
     .SignaCreator__text {
-      transform: rotate(24deg)
+      transform: rotate(24deg);
+      width: 250px;
     }
   }
 }
@@ -52,20 +54,43 @@
     top: 56%;
     left: 36%;
     .SignaCreator__text {
-      transform: rotate(-11deg)
+      transform: rotate(-11deg);
+      width: 180px;
     }
   }
   .SignaCreator__textContent--v2 {
     top: 67%;
     left: 38%;
     .SignaCreator__text {
-      transform: rotate(-11deg)
+      transform: rotate(-11deg);
+      width: 180px;
+    }
+  }
+}
+
+.SignaCreator--ogo {
+  .SignaCreator__textContent--v1 {
+    top: 81%;
+    left: 5%;
+    .SignaCreator__text {
+      transform: rotate(0deg);
+      width: 100%;
+      max-width: 220px;
+    }
+  }
+  .SignaCreator__textContent--v2 {
+    top: 88%;
+    left: 5%;
+    .SignaCreator__text {
+      transform: rotate(0deg);
+      width: 100%;
+      max-width:220px;
     }
   }
 }
 
 .drag {
-  .signa__text {
-    box-shadow: 0px 0px 8px 0 #49c5b6
+  .SignaCreator__text {
+    box-shadow: 0px 0px 8px 0 #49c5b6;
   }
 }
