@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Signa />
+        <Signa fileName="vika" />
       </div>
     );
   }

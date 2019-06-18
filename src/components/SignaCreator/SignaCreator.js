@@ -12,7 +12,7 @@ class SignaCreator extends Component {
     const { text1, text2} = this.props;
     const path = "./images/" + this.props.name +".png"
     return (
-      <div className="SignaCreator">
+      <div className={"SignaCreator SignaCreator--" + this.props.name}>
         <div className="SignaCreator__content" id="content">
           <img src={path} alt="" className="SignaCreator__img" />
 

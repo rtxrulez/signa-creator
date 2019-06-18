@@ -9,7 +9,7 @@ class Signa extends Component {
     super(props);
     this.state = {
       text1: "Im",
-      text2: "Nastya",
+      text2: "",
       typeImg: "jpg"
     };
   }
@@ -39,14 +39,17 @@ class Signa extends Component {
   };
 
   render() {
-    const { text1, text2, typeImg } = this.state;
+    const { text1, typeImg } = this.state;
+    const { fileName } = this.props
+    const text2 = fileName
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
         <p> Создайте свою картинку, скачайте и го работать!</p>
         <div className="signa">
 
-          <SignaCreator name="vika" text1={text1} text2={text2} type="jpg"></SignaCreator>
+          <SignaCreator name="nasty" text1={text1} text2={text2} type={typeImg}></SignaCreator>
+          {/* <SignaCreator name={fileName} text1={text1} text2={text2} type="jpg"></SignaCreator> */}
 
           <div className="signa__form">
             <label className="signa__label">

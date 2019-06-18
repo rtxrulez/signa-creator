@@ -1,9 +1,7 @@
 .SignaCreator {
   background: #fcfcfc;
-  width: 400px;
-
   &__content {
-    width: 400px;
+    max-width: 400px;
     position: relative;
   }
 
@@ -18,16 +16,6 @@
     width: 180px;
     height: 100px;
     cursor: move;
-
-    &--v1 {
-      top: 187px;
-      left: 148px;
-    }
-
-    &--v2 {
-      top: 212px;
-      left: 154px;
-    }
   }
 
   &__text {
@@ -42,7 +30,39 @@
   }
 }
 
+.SignaCreator--vika {
+  .SignaCreator__textContent--v1 {
+    top: 62%;
+    left: 10%;
+    .SignaCreator__text {
+      transform: rotate(24deg)
+    }
+  }
+  .SignaCreator__textContent--v2 {
+    top: 67%;
+    left: 6%;
+    .SignaCreator__text {
+      transform: rotate(24deg)
+    }
+  }
+}
 
+.SignaCreator--nasty {
+  .SignaCreator__textContent--v1 {
+    top: 56%;
+    left: 36%;
+    .SignaCreator__text {
+      transform: rotate(-11deg)
+    }
+  }
+  .SignaCreator__textContent--v2 {
+    top: 67%;
+    left: 38%;
+    .SignaCreator__text {
+      transform: rotate(-11deg)
+    }
+  }
+}
 
 .drag {
   .signa__text {
