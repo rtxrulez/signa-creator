@@ -1,58 +1,18 @@
 import React, { Component } from "react";
-import domtoimage from "dom-to-image";
-import Draggable from "react-draggable";
+import SignaCreator from "../SignaCreator/SignaCreator"
+import ElementToImg from "../ElementToImg/ElementToImg"
 import "./Signa.scss";
 
-function getName(type) {
-  let d = new Date();
-  return (
-    "signa_" +
-    d.getFullYear() +
-    d.getMonth() +
-    d.getDate() +
-    "_" +
-    (d.getTime() % (24 * 1000)) +
-    "." +
-    type.toString()
-  );
-}
 
-function generateToImg(node, typeImg) {
-  let typeImgStr = "";
-
-  if (typeImg === "jpg") {
-    typeImgStr = "toJpeg";
-  } else {
-    typeImgStr = "toPng";
-  }
-
-  domtoimage[typeImgStr](node, {
-    quality: 1,
-    width: node.offsetWidth,
-    height: node.offsetHeight,
-    bgcolor: "#FF"
-  })
-    .then(function(dataUrl) {
-      let link = document.createElement("a");
-
-      link.download = getName(typeImg);
-      link.href = dataUrl;
-      link.click();
-    })
-    .catch(function(error) {
-      console.error("oops, something went wrong!", error);
-    });
-}
 class Signa extends Component {
   constructor(props) {
     super(props);
     this.state = {
       text1: "Im",
-      text2: "Vica",
+      text2: "Nastya",
       typeImg: "jpg"
     };
   }
-  componentDidMount() {}
 
   inputText = e => {
     if (e.target.id === "text1") {
@@ -72,10 +32,10 @@ class Signa extends Component {
     });
   };
 
-  generate = () => {
+  handleGenerate = () => {
     const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
-    generateToImg(node, typeImg);
+    ElementToImg(node, typeImg);
   };
 
   render() {
@@ -85,20 +45,9 @@ class Signa extends Component {
         <h1>Signa Creator</h1>
         <p> Создайте свою картинку, скачайте и го работать!</p>
         <div className="signa">
-          <div className="signa__content" id="content">
-            <img src="./images/vika.png" alt="" className="signa__img" />
-            <Draggable defaultClassNameDragging="drag">
-              <div className="signa__textContent signa__textContent--v1">
-                <div className="signa__text">{text1}</div>
-              </div>
-            </Draggable>
 
-            <Draggable>
-              <div className="signa__textContent signa__textContent--v2">
-                <div className="signa__text">{text2}</div>
-              </div>
-            </Draggable>
-          </div>
+          <SignaCreator name="vika" text1={text1} text2={text2} type="jpg"></SignaCreator>
+
           <div className="signa__form">
             <label className="signa__label">
               <input
@@ -121,7 +70,7 @@ class Signa extends Component {
             </label>
             <hr />
             <div className="form-line">
-              <button className="btn btn-success" onClick={this.generate}>
+              <button className="btn btn-success" onClick={this.handleGenerate}>
                 Скачать
               </button>
               <select
