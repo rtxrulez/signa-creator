@@ -91,8 +91,12 @@ class Signa extends Component {
         <div className="signa">
           <div className="signa__content" id="content">
             <img src="./images/vika.png" alt="" className="signa__img" />
-            <div className="signa__text signa__text--str1">{text1}</div>
-            <div className="signa__text signa__text--str2">{text2}</div>
+            <div className="signa__textContent signa__textContent--v1">
+              <div className="signa__text">{text1}</div>
+            </div>
+            <div className="signa__textContent signa__textContent--v2">
+              <div className="signa__text">{text2}</div>
+            </div>
           </div>
           <div className="signa__form">
             <label className="signa__label">
