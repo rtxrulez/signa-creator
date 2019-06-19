@@ -2,18 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
 import ElementToImg from "../ElementToImg/ElementToImg";
+import {setStorage, getStorage, getStorageState} from "../Storage/storage";
 import "./Signa.scss";
 
 class Signa extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text1: "Im",
-      text2: this.props.name,
-      typeImg: "jpg",
-      fontSize: 14,
-      color: "#000"
-    };
+    this.state = getStorageState(this.props.name);
+    setStorage("test", {"get": 1})
+    console.log(getStorage("test"))
   }
 
   inputText = e => {
