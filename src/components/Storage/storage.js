@@ -1,6 +1,11 @@
 export const setStorage = (key, val) => {
   val = JSON.stringify(val);
-  return localStorage.setItem(key, val);
+  try {
+    return localStorage.setItem(key, val);
+  } catch (e) {
+    if (e == QUOTA_EXCEEDED_ERR) {
+     alert('Превышен лимит памяти в браузере!');
+    }
 };
 
 export const getStorage = key => {
