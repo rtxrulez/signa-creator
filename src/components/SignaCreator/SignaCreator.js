@@ -9,8 +9,9 @@ class SignaCreator extends Component {
   }
 
   render() {
-    const { text1, text2} = this.props;
-    const path = "./images/" + this.props.name +".png"
+    const { text1, text2, fontSize } = this.props;
+    const path = "./images/" + this.props.name + ".png";
+    const style1 = { fontSize: `${fontSize}px` };
     return (
       <div className={"SignaCreator SignaCreator--" + this.props.name}>
         <div className="SignaCreator__content" id="content">
@@ -18,13 +19,17 @@ class SignaCreator extends Component {
 
           <Draggable defaultClassNameDragging="drag">
             <div className="SignaCreator__textContent SignaCreator__textContent--v1">
-              <div className="SignaCreator__text">{text1}</div>
+              <div className="SignaCreator__text" style={style1}>
+                {text1}
+              </div>
             </div>
           </Draggable>
 
           <Draggable defaultClassNameDragging="drag">
             <div className="SignaCreator__textContent SignaCreator__textContent--v2">
-              <div className="SignaCreator__text">{text2}</div>
+              <div className="SignaCreator__text" style={style1}>
+                {text2}
+              </div>
             </div>
           </Draggable>
         </div>

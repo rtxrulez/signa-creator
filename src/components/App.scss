@@ -74,8 +74,18 @@ hr {
 
 .form-line {
   display: flex;
+  align-items: center;
+
   select, input, button {
     margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  label {
+    span {
+      margin-right: 15px;
+    }
   }
 }
 

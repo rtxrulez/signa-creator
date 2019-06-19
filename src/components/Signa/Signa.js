@@ -10,7 +10,8 @@ class Signa extends Component {
     this.state = {
       text1: "Im",
       text2: this.props.name,
-      typeImg: "jpg"
+      typeImg: "jpg",
+      fontSize: 14
     };
   }
 
@@ -32,6 +33,12 @@ class Signa extends Component {
     });
   };
 
+  handleFontSize = e => {
+    this.setState({
+      fontSize: e.target.value
+    });
+  };
+
   handleGenerate = () => {
     const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
@@ -39,7 +46,7 @@ class Signa extends Component {
   };
 
   render() {
-    const { text1, text2, typeImg } = this.state;
+    const { text1, text2, typeImg, fontSize } = this.state;
     const { name } = this.props;
     return (
       <div className="signa-app">
@@ -51,6 +58,7 @@ class Signa extends Component {
             text1={text1}
             text2={text2}
             type={typeImg}
+            fontSize={fontSize}
           />
           {/* <SignaCreator name={fileName} text1={text1} text2={text2} type="jpg"></SignaCreator> */}
 
@@ -76,13 +84,12 @@ class Signa extends Component {
             </label>
             <hr />
             <div className="form-line form-line-between">
-              <div className="d-f j-b">
-                <button
-                  className="btn btn-success"
-                  onClick={this.handleGenerate}
-                >
-                  Скачать
-                </button>
+              <div>
+                <Link to="/" className="btn btn-danger">
+                  Назад
+                </Link>
+              </div>
+              <div className="form-line">
                 <select
                   value={typeImg}
                   onChange={this.selectFormat}
@@ -91,12 +98,28 @@ class Signa extends Component {
                   <option value="jpg">jpg</option>
                   <option value="png">png</option>
                 </select>
+                <button
+                  className="btn btn-success"
+                  onClick={this.handleGenerate}
+                >
+                  Скачать
+                </button>
               </div>
-              <div>
-                <Link to="/" className="btn btn-danger">
-                  Назад
-                </Link>
-              </div>
+            </div>
+            <hr />
+            <div className="form-line form-line-between ">
+              <label className="form-line">
+                <span>Размер шрифта: </span>
+                <input
+                  type="range"
+                  className="form-control"
+                  min="10"
+                  max="40"
+                  onChange={this.handleFontSize}
+                  defaultValue={fontSize}
+                />
+                <span>{fontSize}</span>
+              </label>
             </div>
           </div>
         </div>
