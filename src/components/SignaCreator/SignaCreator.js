@@ -9,9 +9,9 @@ class SignaCreator extends Component {
   }
 
   render() {
-    const { text1, text2, fontSize } = this.props;
+    const { text1, text2, fontSize, color } = this.props;
     const path = "./images/" + this.props.name + ".png";
-    const style1 = { fontSize: `${fontSize}px` };
+    const style1 = { fontSize: `${fontSize}px`, color: `${color}` };
     return (
       <div className={"SignaCreator SignaCreator--" + this.props.name}>
         <div className="SignaCreator__content" id="content">

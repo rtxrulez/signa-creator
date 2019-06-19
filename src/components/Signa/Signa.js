@@ -11,7 +11,8 @@ class Signa extends Component {
       text1: "Im",
       text2: this.props.name,
       typeImg: "jpg",
-      fontSize: 14
+      fontSize: 14,
+      color: "#000"
     };
   }
 
@@ -39,6 +40,12 @@ class Signa extends Component {
     });
   };
 
+  handleColor = e => {
+    this.setState({
+      color: e.target.value
+    });
+  };
+
   handleGenerate = () => {
     const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
@@ -46,7 +53,7 @@ class Signa extends Component {
   };
 
   render() {
-    const { text1, text2, typeImg, fontSize } = this.state;
+    const { text1, text2, typeImg, fontSize, color } = this.state;
     const { name } = this.props;
     return (
       <div className="signa-app">
@@ -59,6 +66,7 @@ class Signa extends Component {
             text2={text2}
             type={typeImg}
             fontSize={fontSize}
+            color={color}
           />
           {/* <SignaCreator name={fileName} text1={text1} text2={text2} type="jpg"></SignaCreator> */}
 
@@ -106,7 +114,9 @@ class Signa extends Component {
                 </button>
               </div>
             </div>
+
             <hr />
+
             <div className="form-line form-line-between ">
               <label className="form-line">
                 <span>Размер шрифта: </span>
@@ -119,6 +129,19 @@ class Signa extends Component {
                   defaultValue={fontSize}
                 />
                 <span>{fontSize}</span>
+              </label>
+            </div>
+
+            <hr />
+
+            <div className="form-line form-line-between">
+              <label className="form-line">
+                <span>Цвет текста: </span>
+                <input
+                  type="color"
+                  onChange={this.handleColor}
+                  defaultValue={color}
+                />
               </label>
             </div>
           </div>
