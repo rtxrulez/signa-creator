@@ -8,7 +8,7 @@ import "./Signa.scss";
 class Signa extends Component {
   constructor(props) {
     super(props);
-    this.state = getStorageState(this.props.name);
+    this.state = getStorageState(this.props.name)
     setStorage("test", {"get": 1})
     console.log(getStorage("test"))
   }
@@ -58,6 +58,7 @@ class Signa extends Component {
   render() {
     const { text1, text2, typeImg, fontSize, color, rotate } = this.state;
     const { name } = this.props;
+    setStorage(name, this.state)
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
@@ -142,8 +143,8 @@ class Signa extends Component {
                 <input
                   type="range"
                   className="form-control"
-                  min="1"
-                  max="360"
+                  min="-180"
+                  max="180"
                   onChange={this.handleRotate}
                   defaultValue={rotate}
                 />
