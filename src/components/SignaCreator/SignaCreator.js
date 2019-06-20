@@ -8,10 +8,20 @@ class SignaCreator extends Component {
     super(props);
   }
 
+  handleMouseDown = (e) => {
+    document.addEventListener(this.props.rotate(e, true))
+  }
+
+  handleMouseUp = (e) => {
+    this.props.rotate(e, false)
+  }
+
   render() {
     const { text1, text2, fontSize, color } = this.props;
     const path = "./images/" + this.props.name + ".png";
     const style1 = { fontSize: `${fontSize}px`, color: `${color}` };
+
+
     return (
       <div className={"SignaCreator SignaCreator--" + this.props.name}>
         <div className="SignaCreator__content" id="content">
@@ -19,7 +29,7 @@ class SignaCreator extends Component {
 
           <Draggable defaultClassNameDragging="drag">
             <div className="SignaCreator__textContent SignaCreator__textContent--v1">
-              <div className="SignaCreator__text" style={style1}>
+              <div className="SignaCreator__text" style={style1} onMouseDown={this.handleMouseDown}>
                 {text1}
               </div>
             </div>
