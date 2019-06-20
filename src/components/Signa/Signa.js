@@ -31,6 +31,16 @@ class Signa extends Component {
     });
   };
 
+  handleDragStop = (e, pos) => {
+    const {x, y} = pos;
+    this.setState({
+      pos: {
+        x: x,
+        y: y
+      }
+    })
+  }
+
   handleFontSize = e => {
     this.setState({
       fontSize: e.target.value
@@ -56,7 +66,7 @@ class Signa extends Component {
   };
 
   render() {
-    const { text1, text2, typeImg, fontSize, color, rotate } = this.state;
+    const { text1, text2, typeImg, fontSize, color, rotate, pos } = this.state;
     const { name } = this.props;
     setStorage(name, this.state)
     return (
@@ -72,6 +82,8 @@ class Signa extends Component {
             fontSize={fontSize}
             color={color}
             rotate={rotate}
+            pos={pos}
+            handleDragStop={this.handleDragStop}
           />
           <div className="signa__form">
             <label className="signa__label">

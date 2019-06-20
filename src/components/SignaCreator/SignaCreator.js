@@ -6,12 +6,11 @@ import "./SignaCreator.scss";
 class SignaCreator extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
-    const { text1, text2, fontSize, color } = this.props;
+    const { text1, text2, fontSize, color, handleDragStop, pos } = this.props;
 
     const path = "./images/" + this.props.name + ".png";
 
@@ -33,6 +32,8 @@ class SignaCreator extends Component {
           <img src={path} alt="" className="SignaCreator__img" />
 
           <Draggable
+            onStop={handleDragStop}
+            position={{ x: pos.x, y: pos.y }}
             defaultClassNameDragging="drag"
           >
             <div className="SignaCreator__textContent SignaCreator__textContent--v1">
@@ -42,7 +43,11 @@ class SignaCreator extends Component {
             </div>
           </Draggable>
 
-          <Draggable defaultClassNameDragging="drag">
+          <Draggable
+            onStop={handleDragStop}
+            position={{ x: pos.x, y: pos.y }}
+            defaultClassNameDragging="drag"
+          >
             <div className="SignaCreator__textContent SignaCreator__textContent--v2">
               <div className="SignaCreator__text" style={style2}>
                 {text2}
