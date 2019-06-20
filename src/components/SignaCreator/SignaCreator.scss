@@ -25,6 +25,20 @@
     white-space: nowrap;
     max-width: 186px;
     border: 1px solid transparent;
+    position: relative;
+    user-select: none;
+    &:hover {
+      box-shadow: 1px 1px 10px 1px #49c5b6
+    }
+
+    .parent {
+      border: 1px solid green;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 }
 

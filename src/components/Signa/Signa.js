@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
 import ElementToImg from "../ElementToImg/ElementToImg";
 import {setStorage, getStorage, getStorageState} from "../Storage/storage";
-import {Rotate} from '../Rotate/Rotate'
 import "./Signa.scss";
 
 class Signa extends Component {
@@ -65,7 +64,6 @@ class Signa extends Component {
             type={typeImg}
             fontSize={fontSize}
             color={color}
-            rotate={Rotate}
           />
           <div className="signa__form">
             <label className="signa__label">
