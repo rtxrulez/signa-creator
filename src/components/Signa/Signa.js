@@ -43,6 +43,12 @@ class Signa extends Component {
     });
   };
 
+  handleRotate = (e) => {
+    this.setState({
+      rotate: e.target.value
+    })
+  }
+
   handleGenerate = () => {
     const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
@@ -50,7 +56,7 @@ class Signa extends Component {
   };
 
   render() {
-    const { text1, text2, typeImg, fontSize, color } = this.state;
+    const { text1, text2, typeImg, fontSize, color, rotate } = this.state;
     const { name } = this.props;
     return (
       <div className="signa-app">
@@ -64,6 +70,7 @@ class Signa extends Component {
             type={typeImg}
             fontSize={fontSize}
             color={color}
+            rotate={rotate}
           />
           <div className="signa__form">
             <label className="signa__label">
@@ -124,6 +131,23 @@ class Signa extends Component {
                   defaultValue={fontSize}
                 />
                 <span>{fontSize}</span>
+              </label>
+            </div>
+
+            <hr />
+
+            <div className="form-line form-line-between ">
+              <label className="form-line">
+                <span>Поворот текста: </span>
+                <input
+                  type="range"
+                  className="form-control"
+                  min="1"
+                  max="360"
+                  onChange={this.handleRotate}
+                  defaultValue={rotate}
+                />
+                <span>{rotate}</span>
               </label>
             </div>
 

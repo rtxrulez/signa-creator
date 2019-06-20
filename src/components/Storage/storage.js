@@ -31,7 +31,8 @@ const getStorageState = name => {
       text2: name,
       typeImg: "jpg",
       fontSize: 14,
-      color: "#000"
+      color: "#000",
+      rotate: 30
     };
     setStorage(name, defaultData);
     return defaultData;

@@ -19,7 +19,6 @@
   &__text {
     font-size: 18px;
     color: black;
-    transform: rotate(-10deg);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -68,7 +67,7 @@
     top: 56%;
     left: 36%;
     .SignaCreator__text {
-      transform: rotate(-11deg);
+      // transform: rotate(-11deg);
       width: 180px;
     }
   }
@@ -76,7 +75,7 @@
     top: 67%;
     left: 38%;
     .SignaCreator__text {
-      transform: rotate(-11deg);
+      // transform: rotate(-11deg);
       width: 180px;
     }
   }
