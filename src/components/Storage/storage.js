@@ -27,16 +27,24 @@ const getStorageState = name => {
     return getStorage(name);
   } else {
     const defaultData = {
-      text1: "1111",
-      text2: name,
+      text1: {
+        name: 'First Name',
+        pos: {
+          x: 50,
+          y: -50
+        }
+      },
+      text2: {
+        name: name,
+        pos: {
+          x: 50,
+          y: -70
+        }
+      },
       typeImg: "jpg",
-      fontSize: 14,
+      fontSize: 20,
       color: "#000",
       rotate: 0,
-      pos: {
-        x: 0,
-        y: 0
-      }
     };
     setStorage(name, defaultData);
     return defaultData;

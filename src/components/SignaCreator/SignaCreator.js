@@ -11,8 +11,8 @@ class SignaCreator extends Component {
   }
 
   render() {
-    const { text1, text2, fontSize, color, handleDragStop, pos } = this.props;
-    console.log('tr', this.props)
+    const { text1, text2, fontSize, color, handleDragStop} = this.props;
+
     let Img = (
       <img
         src={"./images/" + this.props.name + ".png"}
@@ -44,24 +44,26 @@ class SignaCreator extends Component {
 
           <Draggable
             onStop={handleDragStop}
-            position={{ x: pos.x, y: pos.y }}
+
+            position={{ x: text1.pos.x, y: text1.pos.y }}
             defaultClassNameDragging="drag"
           >
-            <div className="SignaCreator__textContent SignaCreator__textContent--v1">
+            <div id="text1" className="SignaCreator__textContent SignaCreator__textContent--v1">
               <div className="SignaCreator__text" style={style1}>
-                {text1}
+                {text1.name}
               </div>
             </div>
           </Draggable>
 
           <Draggable
             onStop={handleDragStop}
-            position={{ x: pos.x, y: pos.y }}
+            id="text2"
+            position={{ x: text2.pos.x, y: text2.pos.y }}
             defaultClassNameDragging="drag"
           >
-            <div className="SignaCreator__textContent SignaCreator__textContent--v2">
+            <div id="text2" className="SignaCreator__textContent SignaCreator__textContent--v2">
               <div className="SignaCreator__text" style={style2}>
-                {text2}
+                {text2.name}
               </div>
             </div>
           </Draggable>

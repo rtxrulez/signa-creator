@@ -24,8 +24,8 @@ class ImageLoad extends Component {
 
   handleFileLoad = e => {
     const file = e.target.files[0];
-    console.log('f', file)
-    if (file !== undefined) this.loadFile(file);
+    if (file !== undefined) return this.loadFile(file);
+    console.log('Не удалось загрузить файл!')
   };
 
   handleDelete = () => {

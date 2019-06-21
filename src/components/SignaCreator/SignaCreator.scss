@@ -3,6 +3,12 @@
   &__content {
     max-width: 400px;
     position: relative;
+
+    &:hover {
+      .SignaCreator__text {
+        box-shadow: 1px 1px 10px 1px #49c5b6
+      }
+    }
   }
 
   &__img {
@@ -22,13 +28,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    max-width: 186px;
+    max-width: 100%;
     border: 1px solid transparent;
     position: relative;
     user-select: none;
-    &:hover {
-      box-shadow: 1px 1px 10px 1px #49c5b6
-    }
 
     .parent {
       border: 1px solid green;

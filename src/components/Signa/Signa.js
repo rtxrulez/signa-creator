@@ -10,17 +10,22 @@ class Signa extends Component {
     super(props);
     this.state = getStorageState(this.props.name)
     setStorage("test", {"get": 1})
-    console.log(getStorage("test"))
   }
 
   inputText = e => {
     if (e.target.id === "text1") {
       this.setState({
-        text1: e.target.value
+        text1: {
+          ...this.state.text1,
+          name: e.target.value
+        }
       });
     } else {
       this.setState({
-        text2: e.target.value
+        text2: {
+          ...this.state.text2,
+          name: e.target.value
+        }
       });
     }
   };
@@ -33,12 +38,27 @@ class Signa extends Component {
 
   handleDragStop = (e, pos) => {
     const {x, y} = pos;
-    this.setState({
-      pos: {
-        x: x,
-        y: y
-      }
-    })
+    if (e.target.parentElement.id === "text1") {
+      this.setState({
+        text1: {
+          ...this.state.text1,
+          pos: {
+            x: x,
+            y: y
+          }
+        }
+      })
+    } else {
+      this.setState({
+        text2: {
+          ...this.state.text2,
+          pos: {
+            x: x,
+            y: y
+          }
+        }
+      })
+    }
   }
 
   handleFontSize = e => {
@@ -66,7 +86,7 @@ class Signa extends Component {
   };
 
   render() {
-    const { text1, text2, typeImg, fontSize, color, rotate, pos } = this.state;
+    const { text1, text2, typeImg, fontSize, color, rotate } = this.state;
     const { name } = this.props;
     setStorage(name, this.state)
     return (
@@ -82,7 +102,6 @@ class Signa extends Component {
             fontSize={fontSize}
             color={color}
             rotate={rotate}
-            pos={pos}
             handleDragStop={this.handleDragStop}
           />
           <div className="signa__form">
@@ -92,7 +111,7 @@ class Signa extends Component {
                 className="form-control signa__input"
                 id="text1"
                 onChange={this.inputText}
-                defaultValue={text1}
+                defaultValue={text1.name}
               />
             </label>
 
@@ -102,7 +121,7 @@ class Signa extends Component {
                 className="form-control signa__input"
                 id="text2"
                 onChange={this.inputText}
-                defaultValue={text2}
+                defaultValue={text2.name}
               />
             </label>
             <hr />
