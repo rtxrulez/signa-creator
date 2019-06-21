@@ -41,6 +41,10 @@
   }
 }
 
+.imageLoad.active~.SignaCreator__textContent {
+  display: none;
+}
+
 .SignaCreator--vika {
   .SignaCreator__textContent--v1 {
     top: 62%;

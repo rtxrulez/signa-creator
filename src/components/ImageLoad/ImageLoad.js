@@ -42,8 +42,8 @@ class ImageLoad extends Component {
       active = 'active';
     }
     return (
-      <form className="imageLoad">
-        <div className={"imageLoad__content "  + active}>
+      <form className={"imageLoad " + active}>
+        <div className="imageLoad__content">
           <div className="imageLoad__image">
             <span>Добавить изображение</span>
             <img src={file} />

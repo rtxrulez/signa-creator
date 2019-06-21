@@ -3,6 +3,13 @@
   align-items: center;
   justify-content: center;
 
+  &.active {
+
+    .imageLoad__inputGroup {
+      display: block;
+    }
+  }
+
   img {
     max-width: 100%;
     max-height: 100%;
@@ -33,13 +40,14 @@
     width: 400px;
     min-height: 50px;
 
-    &.active,
     &:hover {
       .imageLoad__inputGroup {
         display: block;
       }
     }
   }
+
+
 
   &__inputGroup {
     position: absolute;
