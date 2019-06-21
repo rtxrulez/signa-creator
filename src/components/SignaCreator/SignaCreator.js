@@ -28,18 +28,19 @@ class SignaCreator extends Component {
       var center_y = img.offsetTop + (img.offsetHeight / 2);
       var mouse_x = evt.pageX;
       var mouse_y = evt.pageY;
+      // console.log('')
       var radians = Math.atan2(mouse_x - center_x, mouse_y - center_y);
-      var degree = (radians * (180 / Math.PI) * -1) + 90;
+      var degree = (radians * (180 / Math.PI) * -1) + 70;
       this.setState({
         rotate1: degree
       })
     }
   };
 
-  handleMouseDownRotate = e => {
-    mouseDown = true;
-    document.addEventListener("mousemove",this.mouse);
-  };
+  // handleMouseDownRotate = e => {
+  //   mouseDown = true;
+  //   document.addEventListener("mousemove",this.mouse);
+  // };
 
   render() {
     const { text1, text2, fontSize, color, handleDragStop } = this.props;
@@ -59,7 +60,7 @@ class SignaCreator extends Component {
     const style1 = {
       fontSize: `${fontSize}px`,
       color: `${color}`,
-      transform: `rotate(${this.state.rotate1}deg)`
+      transform: `rotate(${this.props.rotate}deg)`
     };
 
     const style2 = {
@@ -77,7 +78,6 @@ class SignaCreator extends Component {
             onStop={handleDragStop}
             position={{ x: text1.pos.x, y: text1.pos.y }}
             defaultClassNameDragging="drag"
-            disabled={true}
           >
             <div
               id="text1"
@@ -91,12 +91,12 @@ class SignaCreator extends Component {
 
                 {text1.name}
 
-                <div
+                {/* <div
                   onMouseDown={this.handleMouseDownRotate}
                   className="SignaCreator__control"
                 >
                   <div className="SignaCreator__rotate">r</div>
-                </div>
+                </div> */}
               </div>
             </div>
           </Draggable>

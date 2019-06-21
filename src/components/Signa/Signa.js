@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
 import ElementToImg from "../ElementToImg/ElementToImg";
-import {setStorage, getStorage, getStorageState} from "../Storage/storage";
+import { setStorage, getStorage, getStorageState } from "../Storage/storage";
 import "./Signa.scss";
 
 class Signa extends Component {
   constructor(props) {
     super(props);
-    this.state = getStorageState(this.props.name)
-    setStorage("test", {"get": 1})
+    this.state = getStorageState(this.props.name);
+    setStorage("test", { get: 1 });
   }
 
   inputText = e => {
@@ -37,7 +37,7 @@ class Signa extends Component {
   };
 
   handleDragStop = (e, pos) => {
-    const {x, y} = pos;
+    const { x, y } = pos;
     if (e.target.parentElement.id === "text1") {
       this.setState({
         text1: {
@@ -47,7 +47,7 @@ class Signa extends Component {
             y: y
           }
         }
-      })
+      });
     } else {
       this.setState({
         text2: {
@@ -57,9 +57,9 @@ class Signa extends Component {
             y: y
           }
         }
-      })
+      });
     }
-  }
+  };
 
   handleFontSize = e => {
     this.setState({
@@ -73,11 +73,11 @@ class Signa extends Component {
     });
   };
 
-  handleRotate = (e) => {
+  handleRotate = e => {
     this.setState({
       rotate: e.target.value
-    })
-  }
+    });
+  };
 
   handleGenerate = () => {
     const node = document.getElementById("content");
@@ -88,7 +88,7 @@ class Signa extends Component {
   render() {
     const { text1, text2, typeImg, fontSize, color, rotate } = this.state;
     const { name } = this.props;
-    setStorage(name, this.state)
+    setStorage(name, this.state);
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
@@ -105,6 +105,23 @@ class Signa extends Component {
             handleDragStop={this.handleDragStop}
           />
           <div className="signa__form">
+            <div className="form-line form-line-between ">
+              <label className="form-line">
+                <span>Поворот текста: </span>
+                <input
+                  type="range"
+                  className="form-control"
+                  min="-180"
+                  max="180"
+                  onChange={this.handleRotate}
+                  defaultValue={rotate}
+                />
+                <span>{rotate}</span>
+              </label>
+            </div>
+
+            <hr />
+
             <label className="signa__label">
               <input
                 type="text"
@@ -163,23 +180,6 @@ class Signa extends Component {
                   defaultValue={fontSize}
                 />
                 <span>{fontSize}</span>
-              </label>
-            </div>
-
-            <hr />
-
-            <div className="form-line form-line-between ">
-              <label className="form-line">
-                <span>Поворот текста: </span>
-                <input
-                  type="range"
-                  className="form-control"
-                  min="-180"
-                  max="180"
-                  onChange={this.handleRotate}
-                  defaultValue={rotate}
-                />
-                <span>{rotate}</span>
               </label>
             </div>
 
