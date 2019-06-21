@@ -12,9 +12,8 @@ class SignaList extends Component {
       <div className="signaList">
         <h1>Select Signa Create</h1>
         <div className="signaList__list">
-          <Redirect to="/ImageLoad"></Redirect>
           <Link to="/ImageLoad" className="signaList__item">
-            <h2 className="signaList__text">Вика</h2>
+            <h2 className="signaList__text">Создать свою</h2>
           </Link>
           <Link to="/vika" className="signaList__item">
             <img
@@ -31,10 +30,6 @@ class SignaList extends Component {
               alt="Настя"
             />
             <h2 className="signaList__text">Настя</h2>
-          </Link>
-          <Link to="/ogo" className="signaList__item">
-            <img src="./images/ogo.png" className="signaList__img" alt="Ого" />
-            <h2 className="signaList__text">Ого</h2>
           </Link>
         </div>
       </div>

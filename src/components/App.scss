@@ -11,7 +11,12 @@ body {
   margin: 0;
   padding: 0;
   min-width: 320px;
+}
 
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
 .form-control {

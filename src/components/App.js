@@ -20,12 +20,8 @@ class App extends Component {
             render={props => <Signa {...props} name="vika" />}
           />
           <Route
-            path="/ogo"
-            render={props => <Signa {...props} name="ogo" />}
-          />
-          <Route
             path="/ImageLoad"
-            render={props => <ImageLoad name="newImage" />}
+            render={props => <Signa {...props} name="newImage" />}
           />
         </HashRouter>
       </div>

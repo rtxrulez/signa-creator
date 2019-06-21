@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import domtoimage from "dom-to-image";
 import Draggable from "react-draggable";
+import ImageLoad from "../ImageLoad/ImageLoad";
 import "./SignaCreator.scss";
 
 class SignaCreator extends Component {
@@ -11,8 +12,18 @@ class SignaCreator extends Component {
 
   render() {
     const { text1, text2, fontSize, color, handleDragStop, pos } = this.props;
+    console.log('tr', this.props)
+    let Img = (
+      <img
+        src={"./images/" + this.props.name + ".png"}
+        alt=""
+        className="SignaCreator__img"
+      />
+    );
 
-    const path = "./images/" + this.props.name + ".png";
+    if (this.props.name === "newImage") {
+      Img = <ImageLoad />;
+    }
 
     const style1 = {
       fontSize: `${fontSize}px`,
@@ -29,7 +40,7 @@ class SignaCreator extends Component {
     return (
       <div className={"SignaCreator SignaCreator--" + this.props.name}>
         <div className="SignaCreator__content" id="content">
-          <img src={path} alt="" className="SignaCreator__img" />
+          {Img}
 
           <Draggable
             onStop={handleDragStop}
