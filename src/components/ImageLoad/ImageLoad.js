@@ -24,7 +24,8 @@ class ImageLoad extends Component {
 
   handleFileLoad = e => {
     const file = e.target.files[0];
-    this.loadFile(file);
+    console.log('f', file)
+    if (file !== undefined) this.loadFile(file);
   };
 
   handleDelete = () => {
@@ -35,17 +36,23 @@ class ImageLoad extends Component {
 
   render() {
     const { file } = this.state;
+    let active = '';
+
+    if (file === '') {
+      active = 'active';
+    }
     return (
       <form className="imageLoad">
-        <div className="imageLoad__content">
+        <div className={"imageLoad__content "  + active}>
           <div className="imageLoad__image">
+            <span>Добавить изображение</span>
             <img src={file} />
           </div>
           <div className="imageLoad__inputGroup">
-            <label htmlFor="file" className="imageLoad__label">
-              <div className="imageLoad__add">+</div>
+            <div className="imageLoad__label">
+              <label htmlFor="file" className="imageLoad__add">+</label>
               <input type="file" id="file" onChange={this.handleFileLoad} />
-            </label>
+            </div>
             <button onClick={this.handleDelete} className="imageLoad__delete">x</button>
           </div>
         </div>
