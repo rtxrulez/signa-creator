@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom"
+import { Link, Redirect } from "react-router-dom";
 import "./SignaList.scss";
 
 class SignaList extends Component {
@@ -8,23 +8,37 @@ class SignaList extends Component {
     this.state = {};
   }
   render() {
-    return <div className="signaList">
-      <h1>Select Signa Create</h1>
-      <div className="signaList__list">
-        <Link to="/vika" className="signaList__item">
-          <img src="./images/vika.png" className="signaList__img" alt="Вика"/>
-          <h2 className="signaList__text">Вика</h2>
-        </Link>
-        <Link to="/nasty" className="signaList__item">
-          <img src="./images/nasty.png" className="signaList__img" alt="Настя"/>
-          <h2 className="signaList__text">Настя</h2>
-        </Link>
-        <Link to="/ogo" className="signaList__item">
-          <img src="./images/ogo.png" className="signaList__img" alt="Ого"/>
-          <h2 className="signaList__text">Ого</h2>
-        </Link>
+    return (
+      <div className="signaList">
+        <h1>Select Signa Create</h1>
+        <div className="signaList__list">
+          <Redirect to="/ImageLoad"></Redirect>
+          <Link to="/ImageLoad" className="signaList__item">
+            <h2 className="signaList__text">Вика</h2>
+          </Link>
+          <Link to="/vika" className="signaList__item">
+            <img
+              src="./images/vika.png"
+              className="signaList__img"
+              alt="Вика"
+            />
+            <h2 className="signaList__text">Вика</h2>
+          </Link>
+          <Link to="/nasty" className="signaList__item">
+            <img
+              src="./images/nasty.png"
+              className="signaList__img"
+              alt="Настя"
+            />
+            <h2 className="signaList__text">Настя</h2>
+          </Link>
+          <Link to="/ogo" className="signaList__item">
+            <img src="./images/ogo.png" className="signaList__img" alt="Ого" />
+            <h2 className="signaList__text">Ого</h2>
+          </Link>
+        </div>
       </div>
-    </div>;
+    );
   }
 }
 

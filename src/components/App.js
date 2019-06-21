@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.scss";
+import ImageLoad from "./ImageLoad/ImageLoad";
 import Signa from "./Signa/Signa";
 import SignaList from "./SignaList/SignaList";
 
@@ -21,6 +22,10 @@ class App extends Component {
           <Route
             path="/ogo"
             render={props => <Signa {...props} name="ogo" />}
+          />
+          <Route
+            path="/ImageLoad"
+            render={props => <ImageLoad name="newImage" />}
           />
         </HashRouter>
       </div>
