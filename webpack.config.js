@@ -38,10 +38,16 @@ module.exports = (env, argv) => {
               loader: "postcss-loader",
               options: {
                 ident: "postcss",
-                plugins: loader => [
-                  require('autoprefixer')(),
-                  require("cssnano")() 
-                ]
+                plugins: (loader) => {
+                  if(devMode) {
+                    return []
+                  } else {
+                    return [
+                      require('autoprefixer')(),
+                      require("cssnano")()
+                    ]
+                  }
+                }
               }
             },
             "sass-loader"

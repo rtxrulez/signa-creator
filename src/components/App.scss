@@ -1,11 +1,58 @@
 * {
-    box-sizing: border-box
+  box-sizing: border-box;
 }
 
 body {
-    background: purple;
+  font-family: sans-serif, arial;
+  font-size: 14px;
+  font-weight: 300;
+  color: #202121;
+  background: #f4f7f6;
+  margin: 0;
+  padding: 0;
+}
 
-    div {
-        color: green;
-    }
+.form-control {
+  display: block;
+  height: 40px;
+  padding: 0 15px;
+  background-color: #fff;
+  border: 1px solid #dbe0df;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success {
+  background-color: #49c5b6;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #42AB9E;
+  }
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-bottom: 1px solid #E6EAEA;
+}
+
+.signa hr {
+  margin-left: -20px;
+  margin-right: -20px;
 }

@@ -1,3 +1,59 @@
-body {
-    color: green;
+.signa {
+  background: #fcfcfc;
+  width: 400px;
+
+  &__content {
+    width: 400px;
+    position: relative;
+  }
+
+  &__img {
+    display: block;
+    max-width: 100%;
+  }
+
+  &__text {
+    position: absolute;
+    z-index: 2;
+    font-size: 18px;
+    color: black;
+    transform: rotate(-10deg);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 186px;
+
+    &--str1 {
+      top: 172px;
+      left: 143px;
+    }
+
+    &--str2 {
+      top: 212px;
+      left: 154px;
+      transform: rotate(-10.5deg);
+    }
+  }
+
+  &__form {
+    padding: 20px;
+  }
+
+  &__label {
+    display: block;
+    width: 100%;
+      margin-bottom: 20px;
+  }
+
+  &__input {
+    width: 100%;
+  }
+}
+
+.signa-app {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
