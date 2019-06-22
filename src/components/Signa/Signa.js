@@ -2,22 +2,34 @@ import React, { Component } from "react";
 import domtoimage from "dom-to-image";
 import "./Signa.scss";
 
-function getName() {
-  let d = new Date();
-  return (
-    "signa_" +
-    d.getFullYear() +
-    d.getMonth() +
-    d.getDate() +
-    "_" +
-    (d.getTime() % (24 * 1000)) +
-    ".jpg".toString()
-  );
-}
+class Signa extends Component {
+  /**
+   * Gets a filename
+   *
+   * @returns {string}
+   */
+   getName() {
+    let d = new Date();
+    return (
+      "signa_" +
+      d.getFullYear() +
+      d.getMonth() +
+      d.getDate() +
+      "_" +
+      (d.getTime() % (24 * 1000)) +
+      ".jpg".toString()
+    );
+  }
 
-function generateToImg(node) {
-  domtoimage
-    .toJpeg(node, {
+  /**
+   * Saves a DOMnode as an image to desired file
+   *
+   * @param node
+   */
+  generateToImg(node, extension = 'jpg') {
+    let self = this;
+    let methodToUse = extension == 'jpg' ? 'toJpeg' : 'toPng';
+    domtoimage[methodToUse](node, {
       quality: 1,
       width: node.offsetWidth,
       height: node.offsetHeight,
@@ -26,20 +38,23 @@ function generateToImg(node) {
     .then(function(dataUrl) {
       let link = document.createElement("a");
 
-      link.download = getName();
+      link.download = self.getName();
       link.href = dataUrl;
       link.click();
     })
     .catch(function(error) {
       console.error("oops, something went wrong!", error);
     });
-}
-class Signa extends Component {
+  }
+
   constructor(props) {
     super(props);
+
     this.state = {
-      text1: "Im",
-      text2: "Vica"
+      text: [
+        "text 1",
+        "text 2"
+      ],
     };
   }
   componentDidMount() {
@@ -49,60 +64,74 @@ class Signa extends Component {
     // }, 50);
   }
 
-  inputText = e => {
-    if (e.target.id === "text1") {
-      this.setState({
-        text1: e.target.value
-      });
-    } else {
-      this.setState({
-        text2: e.target.value
-      });
-    }
+  inputText = (index, e) => {
+    let state = this.state;
+    state.text[index] = e.target.value;
   };
 
   generate = () => {
-    const node = document.getElementById("content");
-    generateToImg(node);
+    let node = document.getElementById("content");
+    this.generateToImg(node);
   };
 
+  signaFormInputs = () => {
+    let blocks = [];
+    let self = this;
+    let state = self.state;
+
+    state.text.forEach((val, index) => {
+      let block = <label className="signa__label">
+        <input
+          type="text"
+          className="form-control signa__input"
+          id="text1"
+          onChange={(e) => this.inputText(index, e)}
+          defaultValue={val}
+        />
+      </label>
+
+      blocks.push(block);
+    })
+
+    return blocks;
+  }
+
+  signaFormTexts = () => {
+    let self = this;
+    let blocks = [];
+    this.state.text.forEach((val, index) => {
+      let block =
+        <div className={`signa__text signa__text--str${index + 1}`}>
+          {val}
+        </div>
+
+      blocks.push(block);
+    });
+
+
+    return (
+      <div className="signa__content" id="content">
+        {/* @todo: Make it dynamic */}
+        <img src="./images/vika.png" alt="" className="signa__img" />
+        { blocks }
+      </div>
+    )
+  }
+
   render() {
-    const { text1, text2 } = this.state;
+    let { text } = this.state;
     return (
       <div className="signa-app">
         <h1>Signa Creator</h1>
-        <p> Создайте свою картинку, скачайте и го работать!</p>
+        <p>Создайте свою картинку, скачайте и го работать!</p>
         <div className="signa">
-          <div className="signa__content" id="content">
-            <img src="./images/vika.png" alt="" className="signa__img" />
-            <div className="signa__text signa__text--str1">{text1}</div>
-            <div className="signa__text signa__text--str2">{text2}</div>
-          </div>
+          { this.signaFormTexts() }
           <div className="signa__form">
-            <label className="signa__label">
-              <input
-                type="text"
-                className="form-control signa__input"
-                id="text1"
-                onChange={this.inputText}
-                defaultValue={text1}
-              />
-            </label>
-
-            <label className="signa__label">
-              <input
-                type="text"
-                className="form-control signa__input"
-                id="text2"
-                onChange={this.inputText}
-                defaultValue={text2}
-              />
-            </label>
+            { this.signaFormInputs() }
             <hr />
             <button className="btn btn-success" onClick={this.generate}>
               Скачать
             </button>
-
           </div>
         </div>
       </div>
