@@ -37,7 +37,7 @@
   &__content {
     display: flex;
     position: relative;
-    width: 400px;
+    width: 100%;
     min-height: 50px;
 
     &:hover {
@@ -73,7 +73,7 @@
   }
 
   &__add {
-    background: green;
+    background: #49c5b6;
     color: white;
     font-weight: 300;
     font-size: 40px;
@@ -86,6 +86,10 @@
     top: 0;
     left: 0;
     cursor: crosshair;
+
+    &:hover {
+      background: darken(#49c5b6, 80%)
+    }
   }
 
   &__delete {
@@ -98,11 +102,23 @@
     width: 50px;
     height: 50px;
     border: 0;
-    color: red;
+    color: white;
     font-size: 40px ;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    background: #dc3545;
+
+    &:hover {
+      background: darken(#dc3545, 80%)
+    }
+
+    &::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: url('../../images/close.svg') no-repeat center;
+    }
   }
 
   &__img {

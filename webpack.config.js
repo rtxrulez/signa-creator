@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
-  const devMode = argv.mode === "development"
+  const devMode = argv.mode === "development";
 
   return {
     entry: "./src/index.js",
@@ -38,20 +38,24 @@ module.exports = (env, argv) => {
               loader: "postcss-loader",
               options: {
                 ident: "postcss",
-                plugins: (loader) => {
-                  if(devMode) {
-                    return []
+                plugins: loader => {
+                  if (devMode) {
+                    return [];
                   } else {
-                    return [
-                      require('autoprefixer')(),
-                      require("cssnano")()
-                    ]
+                    return [require("autoprefixer")(), require("cssnano")()];
                   }
                 }
               }
             },
             "sass-loader"
           ]
+        },
+        {
+          test: /\.svg/,
+          use: {
+            loader: "svg-url-loader",
+            options: {}
+          }
         }
       ]
     },
