@@ -13,6 +13,11 @@ class SignaList extends Component {
         <h1>Select Signa Create</h1>
         <div className="signaList__list">
           <Link to="/ImageLoad" className="signaList__item">
+            <img
+              src="./images/add.svg"
+              className="signaList__img"
+              alt="Добавить новую"
+            />
             <h2 className="signaList__text">Создать свою</h2>
           </Link>
           <Link to="/vika" className="signaList__item">
