@@ -28,14 +28,14 @@ const getStorageState = name => {
   } else {
     const defaultData = {
       text1: {
-        name: 'First Name',
+        name: 'Первая строка',
         pos: {
           x: 50,
           y: -50
         }
       },
       text2: {
-        name: name,
+        name: 'Вторая строка',
         pos: {
           x: 50,
           y: -70
@@ -43,7 +43,7 @@ const getStorageState = name => {
       },
       typeImg: "jpg",
       fontSize: 20,
-      color: "#000",
+      color: "#ccc",
       rotate: 0,
     };
     setStorage(name, defaultData);

@@ -128,7 +128,7 @@ class Signa extends Component {
                 className="form-control signa__input"
                 id="text1"
                 onChange={this.inputText}
-                defaultValue={text1.name}
+                placeholder={text1.name}
               />
             </label>
 
@@ -138,7 +138,7 @@ class Signa extends Component {
                 className="form-control signa__input"
                 id="text2"
                 onChange={this.inputText}
-                defaultValue={text2.name}
+                placeholder={text2.name}
               />
             </label>
             <hr />

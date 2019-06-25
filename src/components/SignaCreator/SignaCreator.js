@@ -1,46 +1,12 @@
 import React, { Component } from "react";
-import domtoimage from "dom-to-image";
 import Draggable from "react-draggable";
 import ImageLoad from "../ImageLoad/ImageLoad";
-import { Rotate } from "../Rotate/Rotate";
 import "./SignaCreator.scss";
 
-let mouseDown = false;
-
-document.addEventListener("mouseup", e => {
-  mouseDown = false;
-});
 class SignaCreator extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      mouseDown: false,
-      rotate1: -10
-    };
-    this.rotate1 = React.createRef();
   }
-
-  mouse = evt => {
-    const img = this.rotate1.current
-    console.log("img", img.top);
-    if (mouseDown == true) {
-      var center_x = img.offsetLeft + (img.offsetWidth / 2);
-      var center_y = img.offsetTop + (img.offsetHeight / 2);
-      var mouse_x = evt.pageX;
-      var mouse_y = evt.pageY;
-      // console.log('')
-      var radians = Math.atan2(mouse_x - center_x, mouse_y - center_y);
-      var degree = (radians * (180 / Math.PI) * -1) + 70;
-      this.setState({
-        rotate1: degree
-      })
-    }
-  };
-
-  // handleMouseDownRotate = e => {
-  //   mouseDown = true;
-  //   document.addEventListener("mousemove",this.mouse);
-  // };
 
   render() {
     const { text1, text2, fontSize, color, handleDragStop } = this.props;
@@ -88,15 +54,7 @@ class SignaCreator extends Component {
                 className="SignaCreator__text"
                 style={style1}
               >
-
                 {text1.name}
-
-                {/* <div
-                  onMouseDown={this.handleMouseDownRotate}
-                  className="SignaCreator__control"
-                >
-                  <div className="SignaCreator__rotate">r</div>
-                </div> */}
               </div>
             </div>
           </Draggable>
