@@ -1,13 +1,15 @@
+@import 'vars.scss';
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif, arial;
-  font-size: 14px;
-  font-weight: 300;
-  color: #202121;
-  background: #f4f7f6;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $text-color;
+  background: $body-bg;
   margin: 0;
   padding: 0;
   min-width: 320px;

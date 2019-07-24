@@ -8,7 +8,10 @@ import "./Signa.scss";
 class Signa extends Component {
   constructor(props) {
     super(props);
-    this.state = getStorageState(this.props.name);
+    this.state = {
+      ...getStorageState(this.props.name),
+      loadedImage: false
+    };
     setStorage("test", { get: 1 });
   }
 
@@ -85,8 +88,15 @@ class Signa extends Component {
     ElementToImg(node, typeImg);
   };
 
+  handleLoadImage = () => {
+    console.log('loaded');
+    this.setState({
+      loadedImage: true
+    })
+  }
+
   render() {
-    const { text1, text2, typeImg, fontSize, color, rotate } = this.state;
+    const { text1, text2, typeImg, fontSize, color, rotate, loadedImage } = this.state;
     const { name } = this.props;
     setStorage(name, this.state);
     return (
@@ -102,9 +112,10 @@ class Signa extends Component {
             fontSize={fontSize}
             color={color}
             rotate={rotate}
+            handleLoadImage={this.handleLoadImage}
             handleDragStop={this.handleDragStop}
           />
-          <div className="signa__form">
+          <div className={ "signa__form " + (loadedImage ? 'show' : 'hidden')}>
             <div className="form-line form-line-between ">
               <label className="form-line">
                 <span>Поворот текста: </span>
@@ -142,31 +153,6 @@ class Signa extends Component {
               />
             </label>
             <hr />
-            <div className="form-line form-line-between">
-              <div>
-                <Link to="/" className="btn btn-danger">
-                  Назад
-                </Link>
-              </div>
-              <div className="form-line">
-                <select
-                  value={typeImg}
-                  onChange={this.selectFormat}
-                  className="form-control"
-                >
-                  <option value="jpg">jpg</option>
-                  <option value="png">png</option>
-                </select>
-                <button
-                  className="btn btn-success"
-                  onClick={this.handleGenerate}
-                >
-                  Скачать
-                </button>
-              </div>
-            </div>
-
-            <hr />
 
             <div className="form-line form-line-between ">
               <label className="form-line">
@@ -194,6 +180,31 @@ class Signa extends Component {
                   defaultValue={color}
                 />
               </label>
+            </div>
+
+            <hr />
+            <div className="form-line form-line-between">
+              <div>
+                <Link to="/" className="btn btn-danger">
+                  Назад
+                </Link>
+              </div>
+              <div className="form-line">
+                <select
+                  value={typeImg}
+                  onChange={this.selectFormat}
+                  className="form-control"
+                >
+                  <option value="jpg">jpg</option>
+                  <option value="png">png</option>
+                </select>
+                <button
+                  className="btn btn-success"
+                  onClick={this.handleGenerate}
+                >
+                  Скачать
+                </button>
+              </div>
             </div>
           </div>
         </div>

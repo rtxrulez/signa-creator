@@ -18,6 +18,7 @@ class ImageLoad extends Component {
       this.setState({
         file: e.target.result
       });
+      this.props.handleLoadImage()
     };
     reader.readAsDataURL(file);
   };

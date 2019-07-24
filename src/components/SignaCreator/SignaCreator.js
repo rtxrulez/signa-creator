@@ -9,7 +9,7 @@ class SignaCreator extends Component {
   }
 
   render() {
-    const { text1, text2, fontSize, color, handleDragStop } = this.props;
+    const { text1, text2, fontSize, color, handleDragStop, handleLoadImage } = this.props;
 
     let Img = (
       <img
@@ -20,7 +20,7 @@ class SignaCreator extends Component {
     );
 
     if (this.props.name === "newImage") {
-      Img = <ImageLoad />;
+      Img = <ImageLoad handleLoadImage={handleLoadImage} />;
     }
 
     const style1 = {

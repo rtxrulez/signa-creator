@@ -10,7 +10,12 @@ class App extends Component {
     return (
       <div className="App">
         <HashRouter>
-          <Route path="/" exact={true} component={SignaList} />
+          <Route
+            path="/"
+            exact={true}
+            render={props => <Signa {...props} name="newImage" />}
+          />
+          <Route path="/ImageLoad" exact={true} component={SignaList} />
           <Route
             path="/nasty"
             render={props => <Signa {...props} name="nasty" />}
@@ -18,10 +23,6 @@ class App extends Component {
           <Route
             path="/vika"
             render={props => <Signa {...props} name="vika" />}
-          />
-          <Route
-            path="/ImageLoad"
-            render={props => <Signa {...props} name="newImage" />}
           />
         </HashRouter>
       </div>
