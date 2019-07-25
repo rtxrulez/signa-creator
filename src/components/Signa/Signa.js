@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
 import ElementToImg from "../ElementToImg/ElementToImg";
 import { setStorage, getStorage, getStorageState } from "../Storage/storage";
+import Layout from "../Layout/Layout";
 import "./Signa.scss";
 
 class Signa extends Component {
@@ -89,20 +90,26 @@ class Signa extends Component {
   };
 
   handleLoadImage = () => {
-    console.log('loaded');
+    console.log("loaded");
     this.setState({
       loadedImage: true
-    })
-  }
+    });
+  };
 
   render() {
-    const { text1, text2, typeImg, fontSize, color, rotate, loadedImage } = this.state;
+    const {
+      text1,
+      text2,
+      typeImg,
+      fontSize,
+      color,
+      rotate,
+      loadedImage
+    } = this.state;
     const { name } = this.props;
     setStorage(name, this.state);
     return (
-      <div className="signa-app">
-        <h1>Signa Creator</h1>
-        <p> Создайте свою картинку, скачайте и го работать!</p>
+      <Layout>
         <div className="signa">
           <SignaCreator
             name={name}
@@ -115,7 +122,7 @@ class Signa extends Component {
             handleLoadImage={this.handleLoadImage}
             handleDragStop={this.handleDragStop}
           />
-          <div className={ "signa__form " + (loadedImage ? 'show' : 'hidden')}>
+          <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
             <div className="form-line form-line-between ">
               <label className="form-line">
                 <span>Поворот текста: </span>
@@ -208,7 +215,7 @@ class Signa extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
