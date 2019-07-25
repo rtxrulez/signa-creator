@@ -110,7 +110,7 @@ class Signa extends Component {
     setStorage(name, this.state);
     return (
       <Layout>
-        <div className="signa">
+        <div className="container signa">
           <SignaCreator
             name={name}
             text1={text1}
