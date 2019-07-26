@@ -1,0 +1,40 @@
+@import "~susy/sass/susy";
+
+$susy: (
+  'columns': susy-repeat(12),
+  'gutters': 20px,
+  'spread': wide,
+  'container-spread': wide,
+  'svg-grid-colors': hsl(180, 50%, 85%),
+  'debug': true,
+  'container': '980px'
+);
+
+@each $key, $value in susy-settings() {
+  /* #{$key}: #{$value} */
+}
+
+@mixin debug() {
+  @if susy-get('debug') {
+    background: susy-svg-grid() no-repeat scroll;
+  }
+}
+
+@mixin flex-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.container {
+  max-width: 980px;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}

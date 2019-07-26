@@ -111,17 +111,21 @@ class Signa extends Component {
     return (
       <Layout>
         <div className="container signa">
-          <SignaCreator
-            name={name}
-            text1={text1}
-            text2={text2}
-            type={typeImg}
-            fontSize={fontSize}
-            color={color}
-            rotate={rotate}
-            handleLoadImage={this.handleLoadImage}
-            handleDragStop={this.handleDragStop}
-          />
+          <div className="signa__content">
+            <SignaCreator
+              name={name}
+              text1={text1}
+              text2={text2}
+              type={typeImg}
+              fontSize={fontSize}
+              color={color}
+              rotate={rotate}
+              handleLoadImage={this.handleLoadImage}
+              handleDragStop={this.handleDragStop}
+            />
+          </div>
+          <div className="signa__form">2</div>
+          {/*
           <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
             <div className="form-line form-line-between ">
               <label className="form-line">
@@ -213,7 +217,7 @@ class Signa extends Component {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Layout>
     );

@@ -1,34 +1,45 @@
+@import '../vars.scss';
+
 .imageLoad {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &.active {
+  &.load {
+    .imageLoad__delete {
+      display: flex;
+    }
 
-    .imageLoad__inputGroup {
-      display: block;
+    .imageLoad__add {
+      width: 40px;
+      height: 40px;
+      background: $success;
     }
   }
 
   &__image {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__content {
     display: flex;
     position: relative;
     width: 100%;
-    min-height: 50px;
+    min-height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    transition: all .2s ease;
 
     &:hover {
+      border-style: dashed;
+
       .imageLoad__inputGroup {
         display: block;
       }
     }
   }
-
-
 
   &__inputGroup {
     position: absolute;
@@ -36,7 +47,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    display: none;
+    display: block;
     z-index: 4;
   }
 
@@ -54,28 +65,26 @@
   }
 
   &__add {
-    background: #49c5b6;
     color: white;
-    font-weight: 300;
-    font-size: 40px;
-    height: 50px;
-    width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 0;
+    bottom: 0;
     left: 0;
+    right: 0;
     cursor: crosshair;
 
     &:hover {
-      background: darken(#49c5b6, 80%)
+      background: #ccc;
+      opacity: 0.1;
     }
   }
 
   &__delete {
     position: absolute;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     top: 0;
@@ -91,7 +100,7 @@
     background: #dc3545;
 
     &:hover {
-      background: darken(#dc3545, 80%)
+      opacity: .8;
     }
 
     &::before {
@@ -123,8 +132,11 @@
     position: absolute;
     left: 0;
     right: 0;
-    display: inline-block;
-    margin: 17px auto;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
     pointer-events: none;
   }

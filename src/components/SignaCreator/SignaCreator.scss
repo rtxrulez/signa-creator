@@ -1,7 +1,7 @@
 .SignaCreator {
   background: #fcfcfc;
   &__content {
-    max-width: 400px;
+    // max-width: 400px;
     position: relative;
 
     &:hover {
@@ -48,7 +48,7 @@
   }
 }
 
-.imageLoad.active~.SignaCreator__textContent {
+.imageLoad.noload~.SignaCreator__textContent {
   display: none;
 }
 

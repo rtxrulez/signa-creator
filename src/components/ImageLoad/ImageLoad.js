@@ -37,21 +37,23 @@ class ImageLoad extends Component {
 
   render() {
     const { file } = this.state;
-    let active = '';
+    let statusImageClass = '';
 
     if (file === '') {
-      active = 'active';
+      statusImageClass = 'noload';
+    } else {
+      statusImageClass = 'load'
     }
     return (
-      <form className={"imageLoad " + active}>
+      <form className={"imageLoad " + statusImageClass}>
         <div className="imageLoad__content">
           <div className="imageLoad__image">
-            <span>Добавить изображение</span>
+            <span>Загрузить изображение</span>
             <img src={file} />
           </div>
           <div className="imageLoad__inputGroup">
             <div className="imageLoad__label">
-              <label htmlFor="file" className="imageLoad__add">+</label>
+              <label htmlFor="file" className="imageLoad__add"></label>
               <input type="file" id="file" onChange={this.handleFileLoad} />
             </div>
             <button onClick={this.handleDelete} className="imageLoad__delete"></button>
