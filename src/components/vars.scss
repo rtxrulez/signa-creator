@@ -15,5 +15,8 @@ $primary-hover:   #26527C;
 $success:         #269926;
 $success-hover:   #008500;
 
-$danger:          #BF6830;
-$danger-hover:    #A64100;
+$warning:          #BF6830;
+$warning-hover:    #A64100;
+
+$danger:           #dc3545;
+$danger-hover:      darken($danger, 0.5);

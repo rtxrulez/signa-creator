@@ -50,24 +50,35 @@ body {
 }
 
 .btn-success {
-  background-color: #49c5b6;
+  background-color: $success;
   color: #fff;
 
   &:hover,
   &:focus {
     color: #fff;
-    background-color: #42AB9E;
+    background-color: $success-hover;
   }
 }
 
 .btn-danger {
-  background-color: #dc3545;
+  background-color: $danger;
   color: #fff;
 
   &:hover,
   &:focus {
     color: #fff;
-    background-color: darken(#dc3545, 0.5)
+    background-color: $danger-hover
+  }
+}
+
+.btn-primary {
+  background-color: $primary;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: $primary-hover;
   }
 }
 
@@ -127,19 +138,4 @@ hr {
   line-height: 8rem;
   height: 8rem;
   padding-left: 1rem;
-}
-
-
-.signa {
-  display: flex;
-
-  &__content {
-    padding: 0 10px;
-    width: span(1 of 2 wide);
-  }
-
-  &__form {
-    padding: 0 10px;
-    width: span(1 of 2);
-  }
 }

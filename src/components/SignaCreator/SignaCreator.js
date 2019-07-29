@@ -9,71 +9,42 @@ class SignaCreator extends Component {
   }
 
   render() {
-    const { text1, text2, fontSize, color, handleDragStop, handleLoadImage } = this.props;
+    const { textList, handleDragStop, handleLoadImage } = this.props;
 
-    let Img = (
-      <img
-        src={"./images/" + this.props.name + ".png"}
-        alt=""
-        className="SignaCreator__img"
-      />
-    );
+    const textInDom = textList.map((v, k) => {
+      console.log("v", v);
 
-    if (this.props.name === "newImage") {
-      Img = <ImageLoad handleLoadImage={handleLoadImage} />;
-    }
+      const style = {
+        fontSize: `${v.fontSize}px`,
+        color: `${v.color}`,
+        transform: `rotate(${v.rotate}deg)`
+      };
 
-    const style1 = {
-      fontSize: `${fontSize}px`,
-      color: `${color}`,
-      transform: `rotate(${this.props.rotate}deg)`
-    };
-
-    const style2 = {
-      fontSize: `${fontSize}px`,
-      color: `${color}`,
-      transform: `rotate(${this.props.rotate}deg)`
-    };
+      return (
+        <Draggable
+          onStop={(e, pos) => handleDragStop(e, pos, k)}
+          position={{ x: v.pos.x, y: v.pos.y }}
+          defaultClassNameDragging="drag"
+          key={k}
+        >
+          <div
+            id={`text${k}`}
+            className={`SignaCreator__textContent SignaCreator__textContent--v${k}`}
+          >
+            <div ref={v.rotate} className="SignaCreator__text" style={style}>
+              {v.name}
+            </div>
+          </div>
+        </Draggable>
+      );
+    });
 
     return (
-      <div className={"SignaCreator SignaCreator--" + this.props.name}>
+      <div className={"SignaCreator SignaCreator--ogo"}>
         <div className="SignaCreator__content" id="content">
-          {Img}
+          <ImageLoad handleLoadImage={handleLoadImage} />
 
-          <Draggable
-            onStop={handleDragStop}
-            position={{ x: text1.pos.x, y: text1.pos.y }}
-            defaultClassNameDragging="drag"
-          >
-            <div
-              id="text1"
-              className="SignaCreator__textContent SignaCreator__textContent--v1"
-            >
-              <div
-                ref={this.rotate1}
-                className="SignaCreator__text"
-                style={style1}
-              >
-                {text1.name}
-              </div>
-            </div>
-          </Draggable>
-
-          <Draggable
-            onStop={handleDragStop}
-            id="text2"
-            position={{ x: text2.pos.x, y: text2.pos.y }}
-            defaultClassNameDragging="drag"
-          >
-            <div
-              id="text2"
-              className="SignaCreator__textContent SignaCreator__textContent--v2"
-            >
-              <div className="SignaCreator__text" style={style2}>
-                {text2.name}
-              </div>
-            </div>
-          </Draggable>
+          {textInDom}
         </div>
       </div>
     );

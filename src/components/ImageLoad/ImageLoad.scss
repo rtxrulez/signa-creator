@@ -11,9 +11,11 @@
     }
 
     .imageLoad__add {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       background: $success;
+      font-size: 50px;
+      font-weight: 400;
     }
   }
 
@@ -25,6 +27,8 @@
 
   &__content {
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 100%;
     min-height: 400px;

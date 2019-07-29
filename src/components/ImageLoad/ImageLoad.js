@@ -53,7 +53,7 @@ class ImageLoad extends Component {
           </div>
           <div className="imageLoad__inputGroup">
             <div className="imageLoad__label">
-              <label htmlFor="file" className="imageLoad__add"></label>
+              <label htmlFor="file" className="imageLoad__add">+</label>
               <input type="file" id="file" onChange={this.handleFileLoad} />
             </div>
             <button onClick={this.handleDelete} className="imageLoad__delete"></button>

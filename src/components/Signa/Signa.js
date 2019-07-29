@@ -10,10 +10,22 @@ class Signa extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...getStorageState(this.props.name),
+      // ...getStorageState(this.props.name),
+      defaultTextData: {
+        name: "Строка 1",
+        pos: {
+          x: 50,
+          y: -50
+        },
+        fontSize: 20,
+        color: "#ccc",
+        rotate: 0
+      },
+      textList: [],
+      typeImg: "jpg",
       loadedImage: false
     };
-    setStorage("test", { get: 1 });
+    // setStorage("test", { get: 1 });
   }
 
   inputText = e => {
@@ -40,29 +52,19 @@ class Signa extends Component {
     });
   };
 
-  handleDragStop = (e, pos) => {
+  handleDragStop = (e, pos, k) => {
+    console.log("k", k);
+
     const { x, y } = pos;
-    if (e.target.parentElement.id === "text1") {
-      this.setState({
-        text1: {
-          ...this.state.text1,
-          pos: {
-            x: x,
-            y: y
-          }
-        }
-      });
-    } else {
-      this.setState({
-        text2: {
-          ...this.state.text2,
-          pos: {
-            x: x,
-            y: y
-          }
-        }
-      });
-    }
+
+    let textList = [...this.state.textList];
+
+    textList[k].pos.x = x;
+    textList[k].pos.y = y;
+
+    this.setState({
+      textList: textList
+    });
   };
 
   handleFontSize = e => {
@@ -96,35 +98,41 @@ class Signa extends Component {
     });
   };
 
+  handleAppendText = () => {
+    console.log("append");
+    let defaultTextData = { ...this.state.defaultTextData };
+    let textList = [...this.state.textList];
+
+    let len = textList.length;
+    defaultTextData.name = "Строка " + (len + 1);
+
+    textList.push(defaultTextData);
+    this.setState({
+      textList: textList
+    });
+  };
+
   render() {
-    const {
-      text1,
-      text2,
-      typeImg,
-      fontSize,
-      color,
-      rotate,
-      loadedImage
-    } = this.state;
+    const { textList, typeImg, loadedImage } = this.state;
     const { name } = this.props;
     setStorage(name, this.state);
     return (
       <Layout>
-        <div className="container signa">
+        <div className={"container signa " + (loadedImage ? "show" : "hidden")}>
           <div className="signa__content">
             <SignaCreator
-              name={name}
-              text1={text1}
-              text2={text2}
+              textList={textList}
               type={typeImg}
-              fontSize={fontSize}
-              color={color}
-              rotate={rotate}
               handleLoadImage={this.handleLoadImage}
               handleDragStop={this.handleDragStop}
             />
           </div>
-          <div className="signa__form">2</div>
+          <div className="signa__form">
+            <p>Создайте свою картинку, скачайте и го работать!</p>
+            <button className="btn btn-primary" onClick={this.handleAppendText}>
+              Добавить строку
+            </button>
+          </div>
           {/*
           <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
             <div className="form-line form-line-between ">
