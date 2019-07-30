@@ -21,6 +21,9 @@ class Signa extends Component {
         color: "#ccc",
         rotate: 0
       },
+      selectTextData: {
+        // выбранный текст
+      },
       textList: [
         {
           name: "Строка 1",
@@ -123,8 +126,17 @@ class Signa extends Component {
     });
   };
 
+  handleSelectText = key => {
+    const { textList } = this.state;
+    console.log("select text", textList[key]);
+
+    this.setState({
+      selectTextData: textList[key]
+    });
+  };
+
   render() {
-    const { textList, typeImg, loadedImage } = this.state;
+    const { textList, typeImg, selectTextData, loadedImage } = this.state;
     const { name } = this.props;
     setStorage(name, this.state);
     return (
@@ -133,7 +145,9 @@ class Signa extends Component {
           <div className="signa__content">
             <SignaCreator
               textList={textList}
+              selectTextData={selectTextData}
               type={typeImg}
+              handleSelectText={this.handleSelectText}
               handleLoadImage={this.handleLoadImage}
               handleDragStop={this.handleDragStop}
             />
