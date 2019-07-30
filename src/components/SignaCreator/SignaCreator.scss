@@ -2,12 +2,14 @@
 
 .SignaCreator {
   background: #fcfcfc;
+
   &__content {
     // max-width: 400px;
     position: relative;
 
+    &.active,
     &:hover {
-      .SignaCreator__text {
+      .SignaCreator__row {
         box-shadow: 1px 1px 10px 1px $success;
       }
     }
@@ -24,8 +26,8 @@
     cursor: move;
     display: flex;
     align-items: center;
-    overflow: hidden;
     border-radius: $border-radius;
+    font-size: 18px;
 
     &:hover {
       .SignaCreator__btn {
@@ -45,8 +47,12 @@
     height: 100%;
   }
 
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
   &__text {
-    font-size: 18px;
     color: black;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -57,6 +63,7 @@
     user-select: none;
     display: flex;
     justify-content: space-between;
+    padding: 0 10px;
   }
 
   &__btn {

@@ -24,6 +24,7 @@ class Signa extends Component {
       selectTextData: {
         // выбранный текст
       },
+      selectKey: 0,
       textList: [
         {
           name: "Строка 1",
@@ -82,8 +83,11 @@ class Signa extends Component {
   };
 
   handleFontSize = e => {
+    const textList = [...this.state.textList];
+    textList[this.state.selectKey].fontSize = e.target.value;
+
     this.setState({
-      fontSize: e.target.value
+      textList: textList
     });
   };
 
@@ -94,8 +98,11 @@ class Signa extends Component {
   };
 
   handleRotate = e => {
+    const textList = [...this.state.textList];
+    textList[this.state.selectKey].rotate = e.target.value;
+
     this.setState({
-      rotate: e.target.value
+      textList: textList
     });
   };
 
@@ -127,18 +134,23 @@ class Signa extends Component {
   };
 
   handleSelectText = key => {
-    const { textList } = this.state;
-    console.log("select text", textList[key]);
-
+    console.log("k", key);
     this.setState({
-      selectTextData: textList[key]
+      selectKey: key
     });
   };
 
   render() {
-    const { textList, typeImg, selectTextData, loadedImage } = this.state;
-    const { name } = this.props;
-    setStorage(name, this.state);
+    const {
+      textList,
+      typeImg,
+      selectKey,
+      selectTextData,
+      loadedImage
+    } = this.state;
+
+    let { rotate, fontSize } = this.state.textList[selectKey];
+
     return (
       <Layout>
         <div className={"container signa " + (loadedImage ? "show" : "hidden")}>
@@ -157,6 +169,37 @@ class Signa extends Component {
             <button className="btn btn-primary" onClick={this.handleAppendText}>
               Добавить строку
             </button>
+            <hr />
+            <div className="form-line form-line-between ">
+              <label className="form-line">
+                <span>Поворот текста: </span>
+                <input
+                  type="range"
+                  className="form-control"
+                  min="-180"
+                  max="180"
+                  onChange={this.handleRotate}
+                  defaultValue={rotate}
+                />
+                <span>{rotate}</span>
+              </label>
+            </div>
+
+            <hr />
+            <div className="form-line form-line-between ">
+              <label className="form-line">
+                <span>Размер шрифта: </span>
+                <input
+                  type="range"
+                  className="form-control"
+                  min="10"
+                  max="40"
+                  onChange={this.handleFontSize}
+                  defaultValue={fontSize}
+                />
+                <span>{fontSize}</span>
+              </label>
+            </div>
           </div>
           {/*
           <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
