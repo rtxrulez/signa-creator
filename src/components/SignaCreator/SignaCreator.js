@@ -34,6 +34,7 @@ class SignaCreator extends Component {
             <div ref={v.rotate} className="SignaCreator__text" style={style}>
               {v.name}
             </div>
+            <button className="SignaCreator__btn"></button>
           </div>
         </Draggable>
       );

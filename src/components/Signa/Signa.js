@@ -21,7 +21,18 @@ class Signa extends Component {
         color: "#ccc",
         rotate: 0
       },
-      textList: [],
+      textList: [
+        {
+          name: "Строка 1",
+          pos: {
+            x: 50,
+            y: -50
+          },
+          fontSize: 20,
+          color: "#ccc",
+          rotate: 0
+        }
+      ],
       typeImg: "jpg",
       loadedImage: false
     };
