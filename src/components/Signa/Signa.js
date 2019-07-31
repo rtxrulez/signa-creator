@@ -44,21 +44,12 @@ class Signa extends Component {
   }
 
   inputText = e => {
-    if (e.target.id === "text1") {
-      this.setState({
-        text1: {
-          ...this.state.text1,
-          name: e.target.value
-        }
-      });
-    } else {
-      this.setState({
-        text2: {
-          ...this.state.text2,
-          name: e.target.value
-        }
-      });
-    }
+    const textList = [...this.state.textList];
+    textList[this.state.selectKey].name = e.target.value;
+
+    this.setState({
+      textList: textList
+    });
   };
 
   selectFormat = e => {
@@ -149,7 +140,7 @@ class Signa extends Component {
       loadedImage
     } = this.state;
 
-    let { rotate, fontSize } = this.state.textList[selectKey];
+    let { rotate, fontSize, name } = this.state.textList[selectKey];
 
     return (
       <Layout>
@@ -169,6 +160,17 @@ class Signa extends Component {
             <button className="btn btn-primary" onClick={this.handleAppendText}>
               Добавить строку
             </button>
+            <hr />
+            <label className="signa__label">
+              <input
+                type="text"
+                className="form-control signa__input"
+                id="text1"
+                onChange={this.inputText}
+                value={name}
+              />
+            </label>
+
             <hr />
             <div className="form-line form-line-between ">
               <label className="form-line">
@@ -200,6 +202,7 @@ class Signa extends Component {
                 <span>{fontSize}</span>
               </label>
             </div>
+            <hr />
           </div>
           {/*
           <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
