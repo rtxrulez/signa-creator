@@ -6,36 +6,30 @@ import { setStorage, getStorage, getStorageState } from "../Storage/storage";
 import Layout from "../Layout/Layout";
 import "./Signa.scss";
 
+const defaultTextData = {
+  name: "Строка 1",
+  pos: {
+    x: 25,
+    y: -25
+  },
+  fontSize: 20,
+  color: "#000",
+  rotate: 0
+};
+
+
 class Signa extends Component {
   constructor(props) {
     super(props);
     this.state = {
       // ...getStorageState(this.props.name),
-      defaultTextData: {
-        name: "Строка 1",
-        pos: {
-          x: 50,
-          y: -50
-        },
-        fontSize: 20,
-        color: "#ccc",
-        rotate: 0
-      },
+      defaultTextData: {...defaultTextData},
       selectTextData: {
         // выбранный текст
       },
       selectKey: 0,
       textList: [
-        {
-          name: "Строка 1",
-          pos: {
-            x: 50,
-            y: -50
-          },
-          fontSize: 20,
-          color: "#ccc",
-          rotate: 0
-        }
+        {...defaultTextData}
       ],
       typeImg: "jpg",
       loadedImage: false
@@ -44,7 +38,6 @@ class Signa extends Component {
   }
 
   handleText = e => {
-    console.log('e', e)
     const textList = [...this.state.textList];
     textList[this.state.selectKey].name = e.target.value;
 
@@ -145,6 +138,7 @@ class Signa extends Component {
     } = this.state;
 
     let { rotate, fontSize, name, color } = this.state.textList[selectKey];
+    console.log('n', name)
 
     return (
       <Layout>
@@ -152,8 +146,9 @@ class Signa extends Component {
           <div className="signa__content">
             <SignaCreator
               textList={textList}
-              selectTextData={selectTextData}
               type={typeImg}
+              selectKey={selectKey}
+              selectTextData={selectTextData}
               handleText={this.handleText}
               handleSelectText={this.handleSelectText}
               handleLoadImage={this.handleLoadImage}
@@ -165,7 +160,18 @@ class Signa extends Component {
             <button className="btn btn-primary" onClick={this.handleAppendText}>
               Добавить строку
             </button>
-
+            <hr />
+            <div className="form-line form-line-between ">
+              <label className="form-line form-line-full">
+                <span>Tекст: </span>
+                <input
+                  type="text"
+                  className="form-control signa__input"
+                  onChange={this.handleText}
+                  defaultValue={name}
+                />
+              </label>
+            </div>
             <hr />
             <div className="form-line form-line-between ">
               <label className="form-line">

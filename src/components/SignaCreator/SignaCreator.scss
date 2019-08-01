@@ -10,7 +10,7 @@
     &.active,
     &:hover {
       .SignaCreator__row {
-        box-shadow: 1px 1px 10px 1px $success;
+        text-shadow: 1px 1px 10px 1px $success;
       }
     }
   }
@@ -29,9 +29,9 @@
     border-radius: $border-radius;
     font-size: 18px;
 
-    &:hover {
-      .SignaCreator__btn {
-        background-color: #ccc;
+    &.active {
+      .SignaCreator__content {
+        box-shadow: 1px 1px 10px 1px $success;
       }
     }
   }

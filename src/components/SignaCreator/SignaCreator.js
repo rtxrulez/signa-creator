@@ -11,19 +11,23 @@ class SignaCreator extends Component {
   render() {
     const {
       textList,
-      handleText,
+      selectKey,
       handleDragStop,
       handleSelectText,
       handleLoadImage
     } = this.props;
 
     const textInDom = textList.map((v, k) => {
-      console.log("v", v);
       const style = {
         fontSize: `${v.fontSize}px`,
         color: `${v.color}`,
         transform: `rotate(${v.rotate}deg)`
       };
+
+      let activeClass = ''
+      if (selectKey === k) {
+        activeClass = 'active'
+      }
 
       return (
         <Draggable
@@ -34,19 +38,13 @@ class SignaCreator extends Component {
         >
           <div
             id={`text${k}`}
-            // onClick={() => {
-            //   handleSelectText(k);
-            // }}
-            className={`SignaCreator__textContent SignaCreator__textContent--v${k}`}
+            onClick={() => {
+              handleSelectText(k);
+            }}
+            className={`SignaCreator__textContent SignaCreator__textContent--v${k} ${activeClass}`}
           >
             <div ref={v.rotate} className="SignaCreator__row" style={style}>
-              <input
-                type="text"
-                className="SignaCreator__text"
-                // onChange={handleText}
-                // value={v.name}
-              />
-              <button className="SignaCreator__btn" />
+              <div className="SignaCreator__text">{v.name}</div>
             </div>
           </div>
         </Draggable>
