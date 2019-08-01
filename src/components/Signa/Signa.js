@@ -43,7 +43,8 @@ class Signa extends Component {
     // setStorage("test", { get: 1 });
   }
 
-  inputText = e => {
+  handleText = e => {
+    console.log('e', e)
     const textList = [...this.state.textList];
     textList[this.state.selectKey].name = e.target.value;
 
@@ -83,8 +84,11 @@ class Signa extends Component {
   };
 
   handleColor = e => {
+    const textList = [...this.state.textList];
+    textList[this.state.selectKey].color = e.target.value;
+
     this.setState({
-      color: e.target.value
+      textList: textList
     });
   };
 
@@ -140,7 +144,7 @@ class Signa extends Component {
       loadedImage
     } = this.state;
 
-    let { rotate, fontSize, name } = this.state.textList[selectKey];
+    let { rotate, fontSize, name, color } = this.state.textList[selectKey];
 
     return (
       <Layout>
@@ -150,6 +154,7 @@ class Signa extends Component {
               textList={textList}
               selectTextData={selectTextData}
               type={typeImg}
+              handleText={this.handleText}
               handleSelectText={this.handleSelectText}
               handleLoadImage={this.handleLoadImage}
               handleDragStop={this.handleDragStop}
@@ -160,16 +165,6 @@ class Signa extends Component {
             <button className="btn btn-primary" onClick={this.handleAppendText}>
               Добавить строку
             </button>
-            <hr />
-            <label className="signa__label">
-              <input
-                type="text"
-                className="form-control signa__input"
-                id="text1"
-                onChange={this.inputText}
-                value={name}
-              />
-            </label>
 
             <hr />
             <div className="form-line form-line-between ">
@@ -203,6 +198,18 @@ class Signa extends Component {
               </label>
             </div>
             <hr />
+
+            <div className="form-line form-line-between">
+              <label className="form-line">
+                <span>Цвет текста: </span>
+                <input
+                  type="color"
+                  onChange={this.handleColor}
+                  defaultValue={color}
+                />
+              </label>
+            </div>
+
           </div>
           {/*
           <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>

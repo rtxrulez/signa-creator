@@ -11,13 +11,14 @@ class SignaCreator extends Component {
   render() {
     const {
       textList,
+      handleText,
       handleDragStop,
       handleSelectText,
       handleLoadImage
     } = this.props;
 
     const textInDom = textList.map((v, k) => {
-      console.log('v', v)
+      console.log("v", v);
       const style = {
         fontSize: `${v.fontSize}px`,
         color: `${v.color}`,
@@ -33,13 +34,18 @@ class SignaCreator extends Component {
         >
           <div
             id={`text${k}`}
-            onClick={() => {
-              handleSelectText(k);
-            }}
+            // onClick={() => {
+            //   handleSelectText(k);
+            // }}
             className={`SignaCreator__textContent SignaCreator__textContent--v${k}`}
           >
             <div ref={v.rotate} className="SignaCreator__row" style={style}>
-              <div className="SignaCreator__text">{v.name}</div>
+              <input
+                type="text"
+                className="SignaCreator__text"
+                // onChange={handleText}
+                // value={v.name}
+              />
               <button className="SignaCreator__btn" />
             </div>
           </div>
