@@ -177,7 +177,7 @@ class Signa extends Component {
                   min="-180"
                   max="180"
                   onChange={this.handleRotate}
-                  defaultValue={rotate}
+                  value={rotate}
                 />
                 <span>{rotate}</span>
               </label>
@@ -193,7 +193,7 @@ class Signa extends Component {
                   min="10"
                   max="40"
                   onChange={this.handleFontSize}
-                  defaultValue={fontSize}
+                  value={fontSize}
                 />
                 <span>{fontSize}</span>
               </label>
@@ -206,7 +206,7 @@ class Signa extends Component {
                 <input
                   type="color"
                   onChange={this.handleColor}
-                  defaultValue={color}
+                  value={color}
                 />
               </label>
             </div>
