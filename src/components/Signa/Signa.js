@@ -27,7 +27,7 @@ class Signa extends Component {
         // выбранный текст
       },
       selectKey: 0,
-      textList: [{ ...defaultTextData },{ ...defaultTextData }],
+      textList: [{ ...defaultTextData }],
       typeImg: "jpg",
       loadedImage: false
     };
@@ -49,17 +49,17 @@ class Signa extends Component {
     });
   };
 
-  handleDragStop = (pos) => {
-    const { selectKey } = this.state;
-
+  handleDragStop = (e, pos, k) => {
     const { x, y } = pos;
-
     let textList = [...this.state.textList];
+    let prevPos = textList[k].pos;
+    prevPos = { ...prevPos };
 
-    textList[selectKey].pos.x = x;
-    textList[selectKey].pos.y = y;
+    prevPos.x = x;
+    prevPos.y = y;
 
-    console.log('textList[selectKey]', textList[selectKey])
+    textList[k].pos = prevPos;
+
     this.setState({
       textList: textList
     });
@@ -106,7 +106,6 @@ class Signa extends Component {
   };
 
   handleAppendText = () => {
-    console.log("append");
     let defaultTextData = { ...this.state.defaultTextData };
     let textList = [...this.state.textList];
 
@@ -120,7 +119,6 @@ class Signa extends Component {
   };
 
   handleSelectText = key => {
-    console.log("k", key);
     this.setState({
       selectKey: key
     });
@@ -136,7 +134,6 @@ class Signa extends Component {
     } = this.state;
 
     let { rotate, fontSize, name, color } = this.state.textList[selectKey];
-    console.log("n", name);
 
     return (
       <Layout>

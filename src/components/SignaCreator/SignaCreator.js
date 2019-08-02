@@ -29,10 +29,9 @@ class SignaCreator extends Component {
         activeClass = 'active'
       }
 
-      console.log('vvv', v)
       return (
         <Draggable
-          onStop={handleDragStop}
+          onStop={(e, pos) => handleDragStop(e, pos, k)}
           position={{ x: v.pos.x, y: v.pos.y }}
           defaultClassNameDragging="drag"
           key={k}
