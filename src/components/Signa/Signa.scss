@@ -1,7 +1,12 @@
+@import '../vars.scss';
 @import '../grid.scss';
 
 .signa {
   display: flex;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
 
   &.hidden {
     .signa__form {
@@ -20,12 +25,20 @@
   &__content {
     padding: 0 10px;
     width: span(1 of 2 wide);
+
+    @media (max-width: $tablet) {
+      width: 100%;
+    }
   }
 
   &__form {
     position: relative;
     padding: 0 10px;
     width: span(1 of 2);
+
+    @media (max-width: $tablet) {
+      width: 100%;
+    }
   }
 
   &__input {

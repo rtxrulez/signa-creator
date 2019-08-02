@@ -17,20 +17,17 @@ const defaultTextData = {
   rotate: 0
 };
 
-
 class Signa extends Component {
   constructor(props) {
     super(props);
     this.state = {
       // ...getStorageState(this.props.name),
-      defaultTextData: {...defaultTextData},
+      defaultTextData: { ...defaultTextData },
       selectTextData: {
         // выбранный текст
       },
       selectKey: 0,
-      textList: [
-        {...defaultTextData}
-      ],
+      textList: [{ ...defaultTextData },{ ...defaultTextData }],
       typeImg: "jpg",
       loadedImage: false
     };
@@ -52,16 +49,17 @@ class Signa extends Component {
     });
   };
 
-  handleDragStop = (e, pos, k) => {
-    console.log("k", k);
+  handleDragStop = (pos) => {
+    const { selectKey } = this.state;
 
     const { x, y } = pos;
 
     let textList = [...this.state.textList];
 
-    textList[k].pos.x = x;
-    textList[k].pos.y = y;
+    textList[selectKey].pos.x = x;
+    textList[selectKey].pos.y = y;
 
+    console.log('textList[selectKey]', textList[selectKey])
     this.setState({
       textList: textList
     });
@@ -138,7 +136,7 @@ class Signa extends Component {
     } = this.state;
 
     let { rotate, fontSize, name, color } = this.state.textList[selectKey];
-    console.log('n', name)
+    console.log("n", name);
 
     return (
       <Layout>
@@ -215,7 +213,6 @@ class Signa extends Component {
                 />
               </label>
             </div>
-
           </div>
           {/*
           <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
