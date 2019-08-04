@@ -17,6 +17,22 @@
       font-size: 50px;
       font-weight: 400;
     }
+
+    .imageLoad__inputGroup {
+      display: none;
+    }
+
+    &:hover {
+      .imageLoad__inputGroup {
+        display: block;
+      }
+    }
+  }
+
+  &.noload {
+    .imageLoad__content {
+      min-height: 400px;
+    }
   }
 
   &__image {
@@ -31,7 +47,7 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    min-height: 400px;
+    min-height: 50px;
     border: 1px solid #ccc;
     border-radius: 2px;
     transition: all .2s ease;
@@ -79,11 +95,6 @@
     left: 0;
     right: 0;
     cursor: crosshair;
-
-    &:hover {
-      background: #ccc;
-      opacity: 0.1;
-    }
   }
 
   &__delete {

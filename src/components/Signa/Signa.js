@@ -9,8 +9,8 @@ import "./Signa.scss";
 const defaultTextData = {
   name: "Строка 1",
   pos: {
-    x: 25,
-    y: -25
+    x: 170,
+    y: -140
   },
   fontSize: 20,
   color: "#000",
@@ -203,12 +203,30 @@ class Signa extends Component {
             <div className="form-line form-line-between">
               <label className="form-line">
                 <span>Цвет текста: </span>
-                <input
-                  type="color"
-                  onChange={this.handleColor}
-                  value={color}
-                />
+                <input type="color" onChange={this.handleColor} value={color} />
               </label>
+            </div>
+
+            <hr />
+            <div className="form-line form-line-between">
+              <label className="form-line">
+                <span>Тип файла: </span>
+                <select
+                  value={typeImg}
+                  onChange={this.selectFormat}
+                  className="form-control"
+                >
+                  <option value="jpg">jpg</option>
+                  <option value="png">png</option>
+                </select>
+              </label>
+            </div>
+            <hr/>
+            <div className="form-line  form-line-between">
+              <span></span>
+              <button className="btn btn-success" onClick={this.handleGenerate}>
+                Скачать
+              </button>
             </div>
           </div>
           {/*

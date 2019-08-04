@@ -31,22 +31,24 @@ body {
   background-color: #fff;
   border: 1px solid #dbe0df;
   transition: all 0.3s ease-in-out;
+  border-radius: $border-radius-base;
 }
 
 .btn {
   position: relative;
   display: inline-block;
   height: 40px;
-  padding: 0 20px;
+  padding: 2px 30px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   border: none;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
-  line-height: 2.7;
+  line-height: 1;
+  border-radius: $border-radius-base;
 }
 
 .btn-success {
@@ -99,6 +101,7 @@ hr {
 
   select, input, button {
     margin-right: 15px;
+
     &:last-child {
       margin-right: 0;
     }
@@ -106,6 +109,10 @@ hr {
   label {
     span {
       margin-right: 15px;
+
+      @media (min-width: $tablet) {
+        min-width: 150px;
+      }
     }
   }
 }
