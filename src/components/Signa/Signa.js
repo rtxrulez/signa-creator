@@ -29,7 +29,8 @@ class Signa extends Component {
       selectKey: 0,
       textList: [{ ...defaultTextData }],
       typeImg: "jpg",
-      loadedImage: false
+      loadedImage: false,
+      download: false // если нажали на скачать
     };
     // setStorage("test", { get: 1 });
   }
@@ -95,7 +96,19 @@ class Signa extends Component {
   handleGenerate = () => {
     const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
-    ElementToImg(node, typeImg);
+    this.setState(
+      {
+        download: true
+      },
+      () => {
+        ElementToImg(node, typeImg);
+      }
+    );
+    setTimeout(() => {
+      this.setState({
+        download: false
+      });
+    }, 1000);
   };
 
   handleLoadImage = () => {
@@ -130,14 +143,21 @@ class Signa extends Component {
       typeImg,
       selectKey,
       selectTextData,
-      loadedImage
+      loadedImage,
+      download
     } = this.state;
 
     let { rotate, fontSize, name, color } = this.state.textList[selectKey];
 
     return (
       <Layout>
-        <div className={"container signa " + (loadedImage ? "show" : "hidden")}>
+        <div
+          className={
+            "container signa " +
+            (loadedImage ? "show" : "hidden") +
+            (download ? " singa-download" : "")
+          }
+        >
           <div className="signa__content">
             <SignaCreator
               textList={textList}
@@ -163,7 +183,7 @@ class Signa extends Component {
                   type="text"
                   className="form-control signa__input"
                   onChange={this.handleText}
-                  defaultValue={name}
+                  value={name}
                 />
               </label>
             </div>
@@ -221,9 +241,9 @@ class Signa extends Component {
                 </select>
               </label>
             </div>
-            <hr/>
+            <hr />
             <div className="form-line  form-line-between">
-              <span></span>
+              <span />
               <button className="btn btn-success" onClick={this.handleGenerate}>
                 Скачать
               </button>

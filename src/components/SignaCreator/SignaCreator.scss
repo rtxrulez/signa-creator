@@ -30,7 +30,7 @@
     font-size: 18px;
 
     &.active {
-      .SignaCreator__content {
+      .SignaCreator__row {
         box-shadow: 1px 1px 10px 1px $success;
       }
     }
@@ -148,4 +148,9 @@
   .SignaCreator__text {
     box-shadow: 0px 0px 8px 0 #49c5b6;
   }
+}
+
+
+.singa-download .SignaCreator__row {
+  box-shadow: none !important;
 }
