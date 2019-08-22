@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var MongoClient = require("mongodb").MongoClient;
 
 var app = express();
-var db
+var db;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -59,13 +59,16 @@ app.post("/street", function(req, res) {
   res.send(city);
 });
 
-// app.listen("3001", function() {
-//   console.log("Singa Creator server start!");
-// });
-
-
-MongoClient.connect('mongodb://localhost:27017/myapi', function(err, database) {
-  if(err) {
-    return console.log('err: ', err)
+MongoClient.connect(
+  "mongodb://localhost:27017/",
+  { useUnifiedTopology: true, useNewUrlParser: true },
+  function(err, database) {
+    if (err) {
+      return console.log("err: ", err);
+    }
+    db = database;
+    app.listen("3001", function() {
+      console.log("Singa Creator server start!");
+    });
   }
-})
+);
