@@ -179,12 +179,12 @@ class Signa extends Component {
             <div className="form-line form-line-between ">
               <label className="form-line form-line-full">
                 <span>Tекст: </span>
-                <input
+                <textarea
                   type="text"
                   className="form-control signa__input"
                   onChange={this.handleText}
                   value={name}
-                />
+                ></textarea>
               </label>
             </div>
             <hr />
