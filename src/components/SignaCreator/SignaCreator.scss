@@ -4,7 +4,6 @@
   background: #fcfcfc;
 
   &__content {
-    // max-width: 400px;
     position: relative;
 
     &.active,
@@ -29,11 +28,6 @@
     border-radius: $border-radius;
     font-size: 18px;
 
-    &.active {
-      .SignaCreator__row {
-        box-shadow: 1px 1px 10px 1px $success;
-      }
-    }
   }
 
   &__control {
@@ -52,6 +46,7 @@
     align-items: center;
     font-weight: 600;
     text-shadow: #fff 1px 1px 0, #fff -1px -1px 0, #fff -1px 1px 0, #fff 1px -1px 0;
+    transition: all .2s ease;
   }
 
   &__text {
@@ -83,74 +78,34 @@
   display: none;
 }
 
-.SignaCreator--vika {
-  .SignaCreator__textContent--v1 {
-    top: 62%;
-    left: 10%;
-
-    .SignaCreator__text {
-      transform: rotate(24deg);
-      width: 250px;
-    }
-  }
-  .SignaCreator__textContent--v2 {
-    top: 68%;
-    left: 6%;
-
-    .SignaCreator__text {
-      transform: rotate(24deg);
-      width: 250px;
-    }
-  }
-}
-
-.SignaCreator--nasty {
-  .SignaCreator__textContent--v1 {
-    top: 56%;
-    left: 36%;
-    .SignaCreator__text {
-      // transform: rotate(-11deg);
-      width: 180px;
-    }
-  }
-  .SignaCreator__textContent--v2 {
-    top: 67%;
-    left: 38%;
-    .SignaCreator__text {
-      // transform: rotate(-11deg);
-      width: 180px;
-    }
-  }
-}
-
-.SignaCreator--ogo {
-  .SignaCreator__textContent--v1 {
-    top: 81%;
-    left: 5%;
-    .SignaCreator__text {
-      transform: rotate(0deg);
-      width: 100%;
-      max-width: 220px;
-    }
-  }
-  .SignaCreator__textContent--v2 {
-    top: 88%;
-    left: 5%;
-    .SignaCreator__text {
-      transform: rotate(0deg);
-      width: 100%;
-      max-width:220px;
-    }
-  }
-}
-
 .drag {
   .SignaCreator__text {
     box-shadow: 0px 0px 8px 0 #49c5b6;
   }
 }
 
-
 .singa-download .SignaCreator__row {
   box-shadow: none !important;
+}
+
+.SignaCreator {
+  &:hover {
+    .SignaCreator__textContent {
+      &.active {
+        .SignaCreator__row {
+          box-shadow: 1px 1px 10px 1px $success;
+
+          &:before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: url('../../images/edit.svg') no-repeat center;
+            background-size: 70% 70%;
+            background-color: $success;
+          }
+        }
+      }
+    }
+  }
 }
