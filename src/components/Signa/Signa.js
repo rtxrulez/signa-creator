@@ -13,7 +13,8 @@ const defaultTextData = {
     y: -140
   },
   fontSize: 20,
-  color: "#000",
+  color: "#000000",
+  strokeColor: "#ffffff",
   rotate: 0
 };
 
@@ -84,6 +85,15 @@ class Signa extends Component {
     });
   };
 
+  handleStrokeColor = e => {
+    const textList = [...this.state.textList];
+    textList[this.state.selectKey].strokeColor = e.target.value;
+
+    this.setState({
+      textList: textList
+    });
+  };
+
   handleRotate = e => {
     const textList = [...this.state.textList];
     textList[this.state.selectKey].rotate = e.target.value;
@@ -147,7 +157,7 @@ class Signa extends Component {
       download
     } = this.state;
 
-    let { rotate, fontSize, name, color } = this.state.textList[selectKey];
+    let { rotate, fontSize, name, color, strokeColor } = this.state.textList[selectKey];
 
     return (
       <Layout>
@@ -228,6 +238,16 @@ class Signa extends Component {
             </div>
 
             <hr />
+
+            <div className="form-line form-line-between">
+              <label className="form-line">
+                <span>Цвет обводки: </span>
+                <input type="color" onChange={this.handleStrokeColor} value={strokeColor} />
+              </label>
+            </div>
+
+            <hr />
+
             <div className="form-line form-line-between">
               <label className="form-line">
                 <span>Тип файла: </span>

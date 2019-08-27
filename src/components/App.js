@@ -15,15 +15,6 @@ class App extends Component {
             exact={true}
             render={props => <Signa {...props} name="newImage" />}
           />
-          <Route path="/ImageLoad" exact={true} component={SignaList} />
-          <Route
-            path="/nasty"
-            render={props => <Signa {...props} name="nasty" />}
-          />
-          <Route
-            path="/vika"
-            render={props => <Signa {...props} name="vika" />}
-          />
         </HashRouter>
       </div>
     );

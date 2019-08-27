@@ -21,6 +21,7 @@ class SignaCreator extends Component {
       const style = {
         fontSize: `${v.fontSize}px`,
         color: `${v.color}`,
+        textShadow: `${v.strokeColor} 1px 1px 0, ${v.strokeColor} -1px -1px 0, ${v.strokeColor} -1px 1px 0, ${v.strokeColor} 1px -1px 0`,
         transform: `rotate(${v.rotate}deg)`
       };
 
