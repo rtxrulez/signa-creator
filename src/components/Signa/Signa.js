@@ -221,7 +221,7 @@ class Signa extends Component {
                   type="range"
                   className="form-control"
                   min="10"
-                  max="40"
+                  max="60"
                   onChange={this.handleFontSize}
                   value={fontSize}
                 />
