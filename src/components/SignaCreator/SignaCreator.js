@@ -25,9 +25,9 @@ class SignaCreator extends Component {
         transform: `rotate(${v.rotate}deg)`
       };
 
-      let activeClass = ''
+      let activeClass = "";
       if (selectKey === k) {
-        activeClass = 'active'
+        activeClass = "active";
       }
 
       return (
@@ -35,6 +35,7 @@ class SignaCreator extends Component {
           onStop={(e, pos) => handleDragStop(e, pos, k)}
           position={{ x: v.pos.x, y: v.pos.y }}
           defaultClassNameDragging="drag"
+          // bounds={{ left: 0, top: 0, right: 458, bottom: 0 }}
           key={k}
         >
           <div

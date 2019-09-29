@@ -5,6 +5,7 @@
 
   &__content {
     position: relative;
+    overflow: hidden;
 
     &.active,
     &:hover {
@@ -27,9 +28,6 @@
     align-items: center;
     border-radius: $border-radius;
     font-size: 18px;
-
-
-
   }
 
   &__control {

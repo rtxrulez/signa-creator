@@ -140,8 +140,8 @@ class Signa extends Component {
     // Новая позиция элемента
     textList.push(defaultTextData);
     this.setState({
-      textList: [...textList]
-    }s);
+      textList: textList
+    });
   };
 
   handleSelectText = key => {
