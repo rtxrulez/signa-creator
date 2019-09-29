@@ -6,8 +6,10 @@ import { setStorage, getStorage, getStorageState } from "../Storage/storage";
 import Layout from "../Layout/Layout";
 import "./Signa.scss";
 
+const DEFAULT_TEXT = "Пример текста ";
+
 const defaultTextData = {
-  name: "Строка 1",
+  name: DEFAULT_TEXT,
   pos: {
     x: 170,
     y: -140
@@ -133,12 +135,13 @@ class Signa extends Component {
     let textList = [...this.state.textList];
 
     let len = textList.length;
-    defaultTextData.name = "Строка " + (len + 1);
+    defaultTextData.name = DEFAULT_TEXT + (len + 1);
 
+    // Новая позиция элемента
     textList.push(defaultTextData);
     this.setState({
-      textList: textList
-    });
+      textList: [...textList]
+    }s);
   };
 
   handleSelectText = key => {
@@ -157,7 +160,9 @@ class Signa extends Component {
       download
     } = this.state;
 
-    let { rotate, fontSize, name, color, strokeColor } = this.state.textList[selectKey];
+    let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
+      selectKey
+    ];
 
     return (
       <Layout>
@@ -242,7 +247,11 @@ class Signa extends Component {
             <div className="form-line form-line-between">
               <label className="form-line">
                 <span>Цвет обводки: </span>
-                <input type="color" onChange={this.handleStrokeColor} value={strokeColor} />
+                <input
+                  type="color"
+                  onChange={this.handleStrokeColor}
+                  value={strokeColor}
+                />
               </label>
             </div>
 
