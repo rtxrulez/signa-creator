@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && cp .gitignore ./dist",
     "gh": "",
     "publish": "git branch -D gh-pages || true && git checkout --orphan gh-pages && git reset --hard && git read-tree --prefix=/ -u master:dist && git commit -am 'Deploy' && git push origin gh-pages && git checkout @{-1}",
     "deploy": "npm run build && npm run publish"
