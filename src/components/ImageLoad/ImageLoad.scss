@@ -32,7 +32,9 @@
 
   &.noload {
     .imageLoad__content {
-      min-height: 400px;
+      @media (min-width: $mobile) {
+        min-height: 400px;
+      }
     }
   }
 

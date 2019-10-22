@@ -203,59 +203,66 @@ class Signa extends Component {
               </label>
             </div>
             <hr />
-            <div className="form-line form-line-between ">
-              <label className="form-line">
-                <span>Поворот текста: </span>
-                <input
-                  type="range"
-                  className="form-control"
-                  min="-180"
-                  max="180"
-                  onChange={this.handleRotate}
-                  value={rotate}
-                />
-                <span>{rotate}</span>
-              </label>
+
+            <div className="signa__picture-control">
+              <div className="form-line form-line-between ">
+                <label className="form-line">
+                  <span>Поворот текста: </span>
+                  <input
+                    type="range"
+                    className="form-control"
+                    min="-180"
+                    max="180"
+                    onChange={this.handleRotate}
+                    value={rotate}
+                  />
+                  <span>{rotate}</span>
+                </label>
+              </div>
+
+              <hr />
+              <div className="form-line form-line-between ">
+                <label className="form-line">
+                  <span>Размер шрифта: </span>
+                  <input
+                    type="range"
+                    className="form-control"
+                    min="10"
+                    max="60"
+                    onChange={this.handleFontSize}
+                    value={fontSize}
+                  />
+                  <span>{fontSize}</span>
+                </label>
+              </div>
+              <hr />
+
+              <div className="form-line form-line-between">
+                <label className="form-line">
+                  <span>Цвет текста: </span>
+                  <input
+                    type="color"
+                    onChange={this.handleColor}
+                    value={color}
+                  />
+                </label>
+              </div>
+
+              <hr />
+
+              <div className="form-line form-line-between">
+                <label className="form-line">
+                  <span>Цвет обводки: </span>
+                  <input
+                    type="color"
+                    onChange={this.handleStrokeColor}
+                    value={strokeColor}
+                  />
+                </label>
+              </div>
+
+              <hr />
             </div>
-
-            <hr />
-            <div className="form-line form-line-between ">
-              <label className="form-line">
-                <span>Размер шрифта: </span>
-                <input
-                  type="range"
-                  className="form-control"
-                  min="10"
-                  max="60"
-                  onChange={this.handleFontSize}
-                  value={fontSize}
-                />
-                <span>{fontSize}</span>
-              </label>
-            </div>
-            <hr />
-
-            <div className="form-line form-line-between">
-              <label className="form-line">
-                <span>Цвет текста: </span>
-                <input type="color" onChange={this.handleColor} value={color} />
-              </label>
-            </div>
-
-            <hr />
-
-            <div className="form-line form-line-between">
-              <label className="form-line">
-                <span>Цвет обводки: </span>
-                <input
-                  type="color"
-                  onChange={this.handleStrokeColor}
-                  value={strokeColor}
-                />
-              </label>
-            </div>
-
-            <hr />
 
             <div className="form-line form-line-between">
               <label className="form-line">

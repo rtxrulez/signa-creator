@@ -6,6 +6,11 @@
 
   @media (max-width: $tablet) {
     flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  @media (max-width: $mobile) {
+    position: relative;
   }
 
   &.hidden {
@@ -23,18 +28,35 @@
   }
 
   &__content {
-    padding: 0 10px;
     width: span(1 of 2 wide);
+
+    @media (min-width: $mobile) {
+      padding: 0 10px;
+    }
 
     @media (max-width: $tablet) {
       width: 100%;
     }
+
+    @media (max-width: $mobile) {
+      &::before {
+        content:"";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
   }
 
   &__form {
-    position: relative;
-    padding: 0 10px;
     width: span(1 of 2);
+
+    @media (min-width: $mobile) {
+      padding: 0 10px;
+    }
 
     @media (max-width: $tablet) {
       width: 100%;
@@ -49,5 +71,19 @@
     line-height: 1.4;
     font-size: 18px;
     text-overflow: ellipsis;
+  }
+
+}
+
+
+.show {
+  .signa__picture-control {
+    @media (max-width: $mobile) {
+      position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    }
   }
 }
