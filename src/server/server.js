@@ -16,62 +16,13 @@ app.get("/", (req, res) => {
 
 app.get("/artists", artistsController.all);
 
-app.get("/artists/:id", (req, res) => {
-  db.get()
-    .collection("artists")
-    .findOne({ _id: ObjectID(req.params.id) }, (err, docs) => {
-      if (err) {
-        console.log(err);
-        return res.sendStatus(500);
-      }
-      res.send(docs);
-    });
-});
+app.get("/artists/:id", artistsController.findById);
 
-app.post("/artists", (req, res) => {
-  var artist = {
-    name: req.body.name
-  };
-  db.get()
-    .collection("artists")
-    .insert(artist, (err, dbResult) => {
-      if (err) {
-        console.log("Error", err);
-        res.send(500);
-      }
-      res.send(artist);
-    });
-});
+app.post("/artists", artistsController.create);
 
-app.put("/artists/:id", (req, res) => {
-  db.get()
-    .collection("artists")
-    .updateOne(
-      { _id: ObjectID(req.params.id) },
-      {
-        name: "test"
-      },
-      (err, docs) => {
-        if (err) {
-          console.log(err);
-          return res.sendStatus(500);
-        }
-        res.sendStatus(200);
-      }
-    );
-});
+app.put("/artists/:id", artistsController.update);
 
-app.delete("/artists/:id", (req, res) => {
-  db.get()
-    .collection("artists")
-    .deleteOne({ _id: ObjectID(req.params.id) }, (err, docs) => {
-      if (err) {
-        console.log(err);
-        return res.sendStatus(500);
-      }
-      res.sendStatus(200);
-    });
-});
+app.delete("/artists/:id", artistsController.delete);
 
 db.connect("mongodb://127.0.0.1:27017", function(err) {
   if (err) {

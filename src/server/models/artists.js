@@ -38,3 +38,11 @@ exports.update = function(id, newData, cb) {
       cb(err, result);
     });
 };
+
+exports.delete = function(id, cb) {
+  db.get()
+    .collection("artists")
+    .deleteOne({ _id: ObjectID(id) }, function(err, result) {
+      cb(err, result);
+    });
+};
