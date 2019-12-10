@@ -1,7 +1,7 @@
 # Signa Creator
 
 Rtx Rulez repository view
-https://rtxrulez.github.io/signa-creator/dist/
+https://rtxrulez.github.io/signa-creator/
 
 Начало работы.
 
