@@ -8,34 +8,74 @@ class SignaList extends Component {
     this.state = {};
   }
   render() {
+    let fakeData = [
+      {
+        id: "",
+        url:
+          "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+        texts: [
+          {
+            text: "Какой то текст1",
+            x: 20,
+            y: 10,
+            rotate: 90,
+            fontSize: 20,
+            color: "#00ff00",
+            shadow: "#ff0000"
+          },
+          {
+            text: "Какой то текст2",
+            x: 20,
+            y: 30,
+            rotate: 90,
+            fontSize: 20,
+            color: "#0000ff",
+            shadow: "#ff0000"
+          }
+        ]
+      },
+      {
+        id: "",
+        url:
+          "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+        texts: [
+          {
+            text: "Какой то текст1",
+            x: 20,
+            y: 10,
+            rotate: 90,
+            fontSize: 20,
+            color: "#00ff00",
+            shadow: "#ff0000"
+          },
+          {
+            text: "Какой то текст2",
+            x: 20,
+            y: 30,
+            rotate: 90,
+            fontSize: 20,
+            color: "#0000ff",
+            shadow: "#ff0000"
+          }
+        ]
+      }
+    ];
+
     return (
       <div className="signaList">
-        <h1>Select Signa Create</h1>
-        <div className="signaList__list">
-          <Link to="/ImageLoad" className="signaList__item">
-            <img
-              src="./images/add.svg"
-              className="signaList__img"
-              alt="Добавить новую"
-            />
-            <h2 className="signaList__text">Создать свою</h2>
-          </Link>
-          <Link to="/vika" className="signaList__item">
-            <img
-              src="./images/vika.png"
-              className="signaList__img"
-              alt="Вика"
-            />
-            <h2 className="signaList__text">Вика</h2>
-          </Link>
-          <Link to="/nasty" className="signaList__item">
-            <img
-              src="./images/nasty.png"
-              className="signaList__img"
-              alt="Настя"
-            />
-            <h2 className="signaList__text">Настя</h2>
-          </Link>
+        <h1>List Created signa</h1>
+        <div className="signaList__content">
+          <ul className="signaList__menu">
+            {fakeData.map((val, k) => {
+              return (
+                <li className="signaList__item" key={k}>
+                  <Link to="/">
+                    <img src={val.url} alt={k} />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     );
