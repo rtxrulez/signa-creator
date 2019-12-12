@@ -63,19 +63,21 @@ class SignaList extends Component {
 
     return (
       <div className="signaList">
-        <h1>List Created signa</h1>
-        <div className="signaList__content">
-          <ul className="signaList__menu">
-            {fakeData.map((val, k) => {
-              return (
-                <li className="signaList__item" key={k}>
-                  <Link to="/">
-                    <img src={val.url} alt={k} />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+        <div className="container signaList__container">
+          <h1>List Created signa</h1>
+          <div className="signaList__content">
+            <ul className="signaList__menu">
+              {fakeData.map((val, k) => {
+                return (
+                  <li className="signaList__item" key={k}>
+                    <Link to="/">
+                      <img src={val.url} alt={k} />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     );

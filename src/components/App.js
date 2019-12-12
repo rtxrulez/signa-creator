@@ -3,6 +3,7 @@ import { HashRouter, Route } from "react-router-dom";
 import "./App.scss";
 import Signa from "./Signa/Signa";
 import SignaList from "./SignaList/SignaList";
+import Layout from "./Layout/Layout";
 
 class App extends Component {
   render() {
@@ -12,9 +13,20 @@ class App extends Component {
           <Route
             path="/"
             exact={true}
-            render={props => <Signa {...props} name="newImage" />}
+            render={props => (
+              <Layout>
+                <Signa {...props} name="newImage" />
+              </Layout>
+            )}
           />
-          <Route path="/list" component={SignaList}></Route>
+          <Route
+            path="/list"
+            render={() => (
+              <Layout>
+                <SignaList />
+              </Layout>
+            )}
+          ></Route>
         </HashRouter>
       </div>
     );

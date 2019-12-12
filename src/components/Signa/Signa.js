@@ -165,128 +165,45 @@ class Signa extends Component {
     ];
 
     return (
-      <Layout>
-        <div
-          className={
-            "container signa " +
-            (loadedImage ? "show" : "hidden") +
-            (download ? " singa-download" : "")
-          }
-        >
-          <div className="signa__content">
-            <SignaCreator
-              textList={textList}
-              type={typeImg}
-              selectKey={selectKey}
-              selectTextData={selectTextData}
-              handleText={this.handleText}
-              handleSelectText={this.handleSelectText}
-              handleLoadImage={this.handleLoadImage}
-              handleDragStop={this.handleDragStop}
-            />
+      <div
+        className={
+          "container signa " +
+          (loadedImage ? "show" : "hidden") +
+          (download ? " singa-download" : "")
+        }
+      >
+        <div className="signa__content">
+          <SignaCreator
+            textList={textList}
+            type={typeImg}
+            selectKey={selectKey}
+            selectTextData={selectTextData}
+            handleText={this.handleText}
+            handleSelectText={this.handleSelectText}
+            handleLoadImage={this.handleLoadImage}
+            handleDragStop={this.handleDragStop}
+          />
+        </div>
+        <div className="signa__form">
+          <p>Создайте свою картинку, скачайте и го работать!</p>
+          <button className="btn btn-primary" onClick={this.handleAppendText}>
+            Добавить строку
+          </button>
+          <hr />
+          <div className="form-line form-line-between ">
+            <label className="form-line form-line-full">
+              <span>Tекст: </span>
+              <textarea
+                type="text"
+                className="form-control signa__input"
+                onChange={this.handleText}
+                value={name}
+              ></textarea>
+            </label>
           </div>
-          <div className="signa__form">
-            <p>Создайте свою картинку, скачайте и го работать!</p>
-            <button className="btn btn-primary" onClick={this.handleAppendText}>
-              Добавить строку
-            </button>
-            <hr />
-            <div className="form-line form-line-between ">
-              <label className="form-line form-line-full">
-                <span>Tекст: </span>
-                <textarea
-                  type="text"
-                  className="form-control signa__input"
-                  onChange={this.handleText}
-                  value={name}
-                ></textarea>
-              </label>
-            </div>
-            <hr />
+          <hr />
 
-            <div className="signa__picture-control">
-              <div className="form-line form-line-between ">
-                <label className="form-line">
-                  <span>Поворот текста: </span>
-                  <input
-                    type="range"
-                    className="form-control"
-                    min="-180"
-                    max="180"
-                    onChange={this.handleRotate}
-                    value={rotate}
-                  />
-                  <span>{rotate}</span>
-                </label>
-              </div>
-
-              <hr />
-              <div className="form-line form-line-between ">
-                <label className="form-line">
-                  <span>Размер шрифта: </span>
-                  <input
-                    type="range"
-                    className="form-control"
-                    min="10"
-                    max="60"
-                    onChange={this.handleFontSize}
-                    value={fontSize}
-                  />
-                  <span>{fontSize}</span>
-                </label>
-              </div>
-              <hr />
-
-              <div className="form-line form-line-between">
-                <label className="form-line">
-                  <span>Цвет текста: </span>
-                  <input
-                    type="color"
-                    onChange={this.handleColor}
-                    value={color}
-                  />
-                </label>
-              </div>
-
-              <hr />
-
-              <div className="form-line form-line-between">
-                <label className="form-line">
-                  <span>Цвет обводки: </span>
-                  <input
-                    type="color"
-                    onChange={this.handleStrokeColor}
-                    value={strokeColor}
-                  />
-                </label>
-              </div>
-
-              <hr />
-            </div>
-
-            <div className="form-line form-line-between">
-              <label className="form-line">
-                <span>Тип файла: </span>
-                <select
-                  value={typeImg}
-                  onChange={this.selectFormat}
-                  className="form-control"
-                >
-                  <option value="jpg">jpg</option>
-                  <option value="png">png</option>
-                </select>
-              </label>
-            </div>
-            <hr />
-            <div className="form-line  form-line-between">
-              <span />
-              <button className="btn btn-success" onClick={this.handleGenerate}>
-                Скачать
-              </button>
-            </div>
-          </div>
-          {/*
-          <div className={"signa__form " + (loadedImage ? "show" : "hidden")}>
+          <div className="signa__picture-control">
             <div className="form-line form-line-between ">
               <label className="form-line">
                 <span>Поворот текста: </span>
@@ -296,35 +213,13 @@ class Signa extends Component {
                   min="-180"
                   max="180"
                   onChange={this.handleRotate}
-                  defaultValue={rotate}
+                  value={rotate}
                 />
                 <span>{rotate}</span>
               </label>
             </div>
 
             <hr />
-
-            <label className="signa__label">
-              <input
-                type="text"
-                className="form-control signa__input"
-                id="text1"
-                onChange={this.inputText}
-                placeholder={text1.name}
-              />
-            </label>
-
-            <label className="signa__label">
-              <input
-                type="text"
-                className="form-control signa__input"
-                id="text2"
-                onChange={this.inputText}
-                placeholder={text2.name}
-              />
-            </label>
-            <hr />
-
             <div className="form-line form-line-between ">
               <label className="form-line">
                 <span>Размер шрифта: </span>
@@ -332,11 +227,19 @@ class Signa extends Component {
                   type="range"
                   className="form-control"
                   min="10"
-                  max="40"
+                  max="60"
                   onChange={this.handleFontSize}
-                  defaultValue={fontSize}
+                  value={fontSize}
                 />
                 <span>{fontSize}</span>
+              </label>
+            </div>
+            <hr />
+
+            <div className="form-line form-line-between">
+              <label className="form-line">
+                <span>Цвет текста: </span>
+                <input type="color" onChange={this.handleColor} value={color} />
               </label>
             </div>
 
@@ -344,42 +247,40 @@ class Signa extends Component {
 
             <div className="form-line form-line-between">
               <label className="form-line">
-                <span>Цвет текста: </span>
+                <span>Цвет обводки: </span>
                 <input
                   type="color"
-                  onChange={this.handleColor}
-                  defaultValue={color}
+                  onChange={this.handleStrokeColor}
+                  value={strokeColor}
                 />
               </label>
             </div>
 
             <hr />
-            <div className="form-line form-line-between">
-              <div>
-                <Link to="/" className="btn btn-danger">
-                  Назад
-                </Link>
-              </div>
-              <div className="form-line">
-                <select
-                  value={typeImg}
-                  onChange={this.selectFormat}
-                  className="form-control"
-                >
-                  <option value="jpg">jpg</option>
-                  <option value="png">png</option>
-                </select>
-                <button
-                  className="btn btn-success"
-                  onClick={this.handleGenerate}
-                >
-                  Скачать
-                </button>
-              </div>
-            </div>
-          </div> */}
+          </div>
+
+          <div className="form-line form-line-between">
+            <label className="form-line">
+              <span>Тип файла: </span>
+              <select
+                value={typeImg}
+                onChange={this.selectFormat}
+                className="form-control"
+              >
+                <option value="jpg">jpg</option>
+                <option value="png">png</option>
+              </select>
+            </label>
+          </div>
+          <hr />
+          <div className="form-line  form-line-between">
+            <span />
+            <button className="btn btn-success" onClick={this.handleGenerate}>
+              Скачать
+            </button>
+          </div>
         </div>
-      </Layout>
+      </div>
     );
   }
 }
