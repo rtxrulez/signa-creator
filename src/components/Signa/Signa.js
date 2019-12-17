@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
 import ElementToImg from "../ElementToImg/ElementToImg";
 import { setStorage, getStorage, getStorageState } from "../Storage/storage";
-import Layout from "../Layout/Layout";
 import "./Signa.scss";
 
 const DEFAULT_TEXT = "Пример текста ";
@@ -24,7 +23,6 @@ class Signa extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // ...getStorageState(this.props.name),
       defaultTextData: { ...defaultTextData },
       selectTextData: {
         // выбранный текст
@@ -35,7 +33,6 @@ class Signa extends Component {
       loadedImage: false,
       download: false // если нажали на скачать
     };
-    // setStorage("test", { get: 1 });
   }
 
   handleText = e => {
@@ -163,6 +160,9 @@ class Signa extends Component {
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey
     ];
+
+    let listSignaId = this.props.match.params.id;
+    console.log("list", listSignaId);
 
     return (
       <div

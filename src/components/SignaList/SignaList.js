@@ -10,7 +10,7 @@ class SignaList extends Component {
   render() {
     let fakeData = [
       {
-        id: "",
+        id: "1",
         url:
           "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
         texts: [
@@ -35,9 +35,9 @@ class SignaList extends Component {
         ]
       },
       {
-        id: "",
+        id: "2",
         url:
-          "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+          "https://img.huffingtonpost.com/asset/5dcc613f1f00009304dee539.jpeg?cache=QaTFuOj2IM&ops=crop_834_777_4651_2994%2Cscalefit_720_noupscale",
         texts: [
           {
             text: "Какой то текст1",
@@ -70,7 +70,7 @@ class SignaList extends Component {
               {fakeData.map((val, k) => {
                 return (
                   <li className="signaList__item" key={k}>
-                    <Link to="/">
+                    <Link to={"/list/" + val.id}>
                       <img src={val.url} alt={k} />
                     </Link>
                   </li>
