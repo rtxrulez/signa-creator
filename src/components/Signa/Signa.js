@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
 import ElementToImg from "../ElementToImg/ElementToImg";
+import { connect } from "react-redux";
 import { setStorage, getStorage, getStorageState } from "../Storage/storage";
 import "./Signa.scss";
 
@@ -162,7 +163,7 @@ class Signa extends Component {
     ];
 
     let listSignaId = this.props.match.params.id;
-    console.log("list", listSignaId);
+    console.log("list", this.props);
 
     return (
       <div
@@ -285,4 +286,12 @@ class Signa extends Component {
   }
 }
 
-export default Signa;
+const mapStateToProps = store => {
+  return {
+    singas: store.singas
+  };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signa);
