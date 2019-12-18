@@ -1,7 +1,7 @@
 const initialState = {
   singas: [
     {
-      id: "1",
+      id: "0",
       url:
         "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
       texts: [
@@ -26,7 +26,7 @@ const initialState = {
       ]
     },
     {
-      id: "2",
+      id: "1",
       url:
         "https://img.huffingtonpost.com/asset/5dcc613f1f00009304dee539.jpeg?cache=QaTFuOj2IM&ops=crop_834_777_4651_2994%2Cscalefit_720_noupscale",
       texts: [

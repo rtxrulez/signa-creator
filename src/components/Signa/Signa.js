@@ -149,6 +149,8 @@ class Signa extends Component {
   };
 
   render() {
+    let imageUrl = "";
+
     const {
       textList,
       typeImg,
@@ -157,13 +159,19 @@ class Signa extends Component {
       loadedImage,
       download
     } = this.state;
+    const { singas } = this.props;
 
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey
     ];
 
     let listSignaId = this.props.match.params.id;
-    console.log("list", this.props);
+    console.log("list", this.state.textList);
+    if (listSignaId) {
+      imageUrl = singas[parseInt(listSignaId)].url;
+    } else {
+      console.log("listSignaIdlistSignaId", listSignaId);
+    }
 
     return (
       <div
@@ -175,6 +183,7 @@ class Signa extends Component {
       >
         <div className="signa__content">
           <SignaCreator
+            imageUrl={imageUrl}
             textList={textList}
             type={typeImg}
             selectKey={selectKey}

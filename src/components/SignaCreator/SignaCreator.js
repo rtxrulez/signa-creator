@@ -10,6 +10,7 @@ class SignaCreator extends Component {
 
   render() {
     const {
+      imageUrl,
       textList,
       selectKey,
       handleDragStop,
@@ -56,7 +57,7 @@ class SignaCreator extends Component {
     return (
       <div className={"SignaCreator SignaCreator--ogo"}>
         <div className="SignaCreator__content" id="content">
-          <ImageLoad handleLoadImage={handleLoadImage} />
+          <ImageLoad imageUrl={imageUrl} handleLoadImage={handleLoadImage} />
 
           {textInDom}
         </div>
