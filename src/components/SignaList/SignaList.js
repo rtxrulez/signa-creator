@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import "./SignaList.scss";
 
 class SignaList extends Component {
@@ -42,4 +43,12 @@ class SignaList extends Component {
   }
 }
 
-export default SignaList;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignaList);
