@@ -1,4 +1,14 @@
+import {
+  fetchSingaRequest,
+  fetchSingaSuccess,
+  fetchSingaFailure
+} from "../actions/fetchSingaActions";
+
 const initialState = {
+  isFetched: false,
+  isFetching: false,
+  error: false,
+
   singas: [
     {
       id: "0",
@@ -55,6 +65,29 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case fetchSingaRequest().type:
+      return {
+        ...state,
+        isFetched: false,
+        isFetching: true
+      };
+
+    case fetchSingaSuccess().type:
+      return {
+        ...state,
+        isFetched: true,
+        isFetching: false,
+        singas: [...action.payload]
+      };
+
+    case fetchSingaFailure().type:
+      return {
+        ...state,
+        isFetched: true,
+        isFetching: false,
+        error: action.error
+      };
+
     default:
       return state;
   }

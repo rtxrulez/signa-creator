@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { getListSinga } from "../../store/actions/fetchSingaActions";
 import "./SignaList.scss";
 
 class SignaList extends Component {
@@ -8,6 +9,11 @@ class SignaList extends Component {
     super(props);
     this.state = {};
   }
+
+  componentDidMount = () => {
+    console.log("dd", dispatch);
+  };
+
   render() {
     const { singas } = this.props;
     console.log("singas list", singas);
