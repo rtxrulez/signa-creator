@@ -1,34 +1,25 @@
-var express = require("express");
+const express = require("express");
+const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
-const ObjectID = require("mongodb").ObjectID;
+const app = express();
+const dbConf = require("../config/dbConf");
+const AppRoutes = require("./routes");
 
-let app = express();
-var db = require("./db");
-var artistsController = require("./controllers/artists");
-console.log("ddd", db.get());
+console.log("rrr", dbConf.url);
+const port = 8000;
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+MongoClient.connect(dbConf.url, (err, database) => {
+  if (err) return console.log("DB Error: ", err);
 
-app.get("/artists", artistsController.all);
+  // Make sure you add the database name and not the collection name
+  const db = database.db("singa");
 
-app.get("/artists/:id", artistsController.findById);
+  // запускаем прослушивание путей
+  // AppRoutes(app, db);
 
-app.post("/artists", artistsController.create);
-
-app.put("/artists/:id", artistsController.update);
-
-app.delete("/artists/:id", artistsController.delete);
-
-db.connect("mongodb://127.0.0.1:27017", function(err) {
-  if (err) {
-    return console.log(err);
-  }
-  app.listen(3012, () => {
-    console.log("API Start!");
+  app.listen(port, () => {
+    console.log("We are live on " + port);
   });
 });

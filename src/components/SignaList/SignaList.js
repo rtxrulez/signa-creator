@@ -11,12 +11,11 @@ class SignaList extends Component {
   }
 
   componentDidMount = () => {
-    console.log("dd", dispatch);
+    this.props.dispatch(getListSinga());
   };
 
   render() {
     const { singas } = this.props;
-    console.log("singas list", singas);
     return (
       <div className="signaList">
         <div className="container signaList__container">
