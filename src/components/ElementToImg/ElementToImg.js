@@ -14,7 +14,7 @@ function getName(type) {
   );
 }
 
-const ElementToImg = (node, typeImg) => {
+export const ElementToImg = (node, typeImg) => {
   let typeImgStr = "";
 
   if (typeImg === "jpg") {
@@ -39,6 +39,24 @@ const ElementToImg = (node, typeImg) => {
     .catch(function(error) {
       console.error("oops, something went wrong!", error);
     });
-}
+};
 
-export default ElementToImg;
+export const ElementToBase64 = (node, typeImg) => {
+  let typeImgStr = "";
+
+  if (typeImg === "jpg") {
+    typeImgStr = "toJpeg";
+  } else {
+    typeImgStr = "toPng";
+  }
+
+  return domtoimage[typeImgStr](node, {
+    quality: 1,
+    width: node.offsetWidth,
+    height: node.offsetHeight,
+    bgcolor: "#FF"
+  })
+  .catch(function(error) {
+    console.error("oops, something went wrong!", error);
+  });
+};

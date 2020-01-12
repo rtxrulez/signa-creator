@@ -4,6 +4,8 @@ import {
   fetchSingaFailure
 } from "../actions/fetchSingaActions";
 
+import { uploadSingaRequest } from "../actions/uploadSingaActions";
+
 const initialState = {
   isFetched: false,
   isFetching: false,
@@ -81,6 +83,29 @@ export default (state = initialState, action) => {
       };
 
     case fetchSingaFailure().type:
+      return {
+        ...state,
+        isFetched: true,
+        isFetching: false,
+        error: action.error
+      };
+
+    case uploadSingaRequest().type:
+      return {
+        ...state,
+        isFetched: false,
+        isFetching: true
+      };
+
+    case uploadSingaRequest().type:
+      return {
+        ...state,
+        isFetched: true,
+        isFetching: false,
+        oneSinga: action.payload
+      };
+
+    case uploadSingaFailure().type:
       return {
         ...state,
         isFetched: true,

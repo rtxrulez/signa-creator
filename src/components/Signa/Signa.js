@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
-import ElementToImg from "../ElementToImg/ElementToImg";
+import { ElementToImg, ElementToBase64 } from "../ElementToImg/ElementToImg";
 import { connect } from "react-redux";
 import { setStorage, getStorage, getStorageState } from "../Storage/storage";
+import { fetchSingaRequest } from "../../store/actions/fetchSingaActions";
 import "./Signa.scss";
 
 const DEFAULT_TEXT = "Пример текста ";
+let node;
 
 const defaultTextData = {
   name: DEFAULT_TEXT,
@@ -17,7 +19,8 @@ const defaultTextData = {
   fontSize: 20,
   color: "#000000",
   strokeColor: "#ffffff",
-  rotate: 0
+  rotate: 0,
+  dataBase64: ""
 };
 
 class Signa extends Component {
@@ -35,6 +38,10 @@ class Signa extends Component {
       download: false // если нажали на скачать
     };
   }
+
+  componentDidMount = () => {
+    node = document.getElementById("content");
+  };
 
   handleText = e => {
     const textList = [...this.state.textList];
@@ -104,7 +111,6 @@ class Signa extends Component {
   };
 
   handleGenerate = () => {
-    const node = document.getElementById("content");
     const typeImg = this.state.typeImg;
     this.setState(
       {
@@ -145,6 +151,19 @@ class Signa extends Component {
   handleSelectText = key => {
     this.setState({
       selectKey: key
+    });
+  };
+
+  save = () => {
+    const typeImg = this.state.typeImg;
+
+    ElementToBase64(node, typeImg).then(dataBase64 => {
+      this.setState(
+        {
+          dataBase64: dataBase64
+        },
+        () => {}
+      );
     });
   };
 
@@ -285,6 +304,9 @@ class Signa extends Component {
           <hr />
           <div className="form-line  form-line-between">
             <span />
+            <button className="btn btn-default" onClick={this.save}>
+              Сохранить
+            </button>
             <button className="btn btn-success" onClick={this.handleGenerate}>
               Скачать
             </button>
@@ -301,6 +323,8 @@ const mapStateToProps = store => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchSingaRequest: fetchSingaRequest
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signa);
