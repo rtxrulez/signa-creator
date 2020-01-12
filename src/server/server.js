@@ -9,6 +9,9 @@ const port = 8000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// parse application/json
+app.use(bodyParser.json());
+
 MongoClient.connect(dbConf.url, (err, database) => {
   if (err) return console.log("DB Error: ", err);
 
@@ -16,7 +19,7 @@ MongoClient.connect(dbConf.url, (err, database) => {
   const db = database.db(dbConf.dbname);
 
   // запускаем прослушивание путей
-  // AppRoutes(app, db);
+  AppRoutes(app, db);
 
   app.listen(port, () => {
     console.log("We are live on " + port);

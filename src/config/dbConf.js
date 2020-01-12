@@ -13,5 +13,7 @@ module.exports = {
     dbpass +
     "@cluster0-jeyfz.mongodb.net/" +
     dbname +
-    "?retryWrites=true&w=majority"
+    "?retryWrites=true&w=majority",
+
+  singaListCollection: "singa_list"
 };
