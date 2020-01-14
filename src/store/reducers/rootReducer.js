@@ -6,7 +6,8 @@ import {
 
 import {
   uploadSingaRequest,
-  uploadSingaFailure
+  uploadSingaFailure,
+  uploadSingaSuccess
 } from "../actions/uploadSingaActions";
 
 const initialState = {
@@ -102,7 +103,7 @@ export default (state = initialState, action) => {
         isFetching: true
       };
 
-    case uploadSingaRequest().type:
+    case uploadSingaSuccess().type:
       return {
         ...state,
         isFetched: true,

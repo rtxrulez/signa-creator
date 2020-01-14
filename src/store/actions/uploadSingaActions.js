@@ -8,10 +8,10 @@ export const uploadSingaRequest = () => {
   };
 };
 
-export const uploadSingaSuccess = singa => {
+export const uploadSingaSuccess = () => {
   return {
     type: "UPLOAD_SINGA_SUCCESS",
-    payload: singa
+    payload: ""
   };
 };
 
