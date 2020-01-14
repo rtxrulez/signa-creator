@@ -1,3 +1,6 @@
+import axios from "axios";
+import config from "../../config/config";
+
 export const uploadSingaRequest = () => {
   return {
     type: "UPLOAD_SINGA_REQUEST",
@@ -18,3 +21,11 @@ export const uploadSingaFailure = () => {
     payload: ""
   };
 };
+
+export function uploadSinga(singaData) {
+  return dispatch => {
+    axios.post(`${config.domain}list`, singaData).then(res => {
+      console.log("result", res);
+    });
+  };
+}

@@ -4,7 +4,10 @@ import SignaCreator from "../SignaCreator/SignaCreator";
 import { ElementToImg, ElementToBase64 } from "../ElementToImg/ElementToImg";
 import { connect } from "react-redux";
 import { setStorage, getStorage, getStorageState } from "../Storage/storage";
-import { fetchSingaRequest } from "../../store/actions/fetchSingaActions";
+import {
+  uploadSingaRequest,
+  uploadSinga
+} from "../../store/actions/uploadSingaActions";
 import "./Signa.scss";
 
 const DEFAULT_TEXT = "Пример текста ";
@@ -162,7 +165,10 @@ class Signa extends Component {
         {
           dataBase64: dataBase64
         },
-        () => {}
+        () => {
+          console.log(this.state);
+          this.props.uploadData(this.state);
+        }
       );
     });
   };
@@ -185,7 +191,7 @@ class Signa extends Component {
     ];
 
     let listSignaId = this.props.match.params.id;
-    console.log("list", this.state.textList);
+
     if (listSignaId) {
       imageUrl = singas[parseInt(listSignaId)].url;
     } else {
@@ -323,8 +329,10 @@ const mapStateToProps = store => {
   };
 };
 
-const mapDispatchToProps = {
-  fetchSingaRequest: fetchSingaRequest
+const mapDispatchToProps = dispatch => {
+  return {
+    uploadData: singaData => dispatch(uploadSinga(singaData))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signa);

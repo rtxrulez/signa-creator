@@ -4,12 +4,16 @@ import {
   fetchSingaFailure
 } from "../actions/fetchSingaActions";
 
-import { uploadSingaRequest } from "../actions/uploadSingaActions";
+import {
+  uploadSingaRequest,
+  uploadSingaFailure
+} from "../actions/uploadSingaActions";
 
 const initialState = {
   isFetched: false,
   isFetching: false,
   error: false,
+  oneSinga: {},
 
   singas: [
     {
@@ -68,6 +72,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case fetchSingaRequest().type:
+      console.log("req", action);
       return {
         ...state,
         isFetched: false,
