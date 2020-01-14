@@ -24,8 +24,13 @@ export const uploadSingaFailure = () => {
 
 export function uploadSinga(singaData) {
   return dispatch => {
-    axios.post(`${config.domain}list`, singaData).then(res => {
-      console.log("result", res);
-    });
+    // axios.post(`${config.domain}list`, singaData).then(res => {
+    //   dispatch(uploadSingaRequest());
+    // });
+    dispatch(uploadSingaRequest());
+    setTimeout(() => {
+      console.log("loading...");
+      dispatch(uploadSingaSuccess());
+    }, 300);
   };
 }

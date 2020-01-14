@@ -184,7 +184,7 @@ class Signa extends Component {
       loadedImage,
       download
     } = this.state;
-    const { singas } = this.props;
+    const { singas, isFetched, isFetching } = this.props;
 
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey
@@ -198,12 +198,16 @@ class Signa extends Component {
       console.log("listSignaIdlistSignaId", listSignaId);
     }
 
+    console.log("isFetched", isFetching);
+
     return (
       <div
         className={
           "container signa " +
           (loadedImage ? "show" : "hidden") +
-          (download ? " singa-download" : "")
+          (download ? " singa-download" : "") +
+          (isFetching ? " fetching " : "") +
+          (isFetched ? " fetched " : "")
         }
       >
         <div className="signa__content">
@@ -310,7 +314,8 @@ class Signa extends Component {
           <hr />
           <div className="form-line  form-line-between">
             <span />
-            <button className="btn btn-default" onClick={this.save}>
+            <button className="btn btn-default btn-save" onClick={this.save}>
+              <span className="loading-img"></span>
               Сохранить
             </button>
             <button className="btn btn-success" onClick={this.handleGenerate}>
@@ -325,7 +330,9 @@ class Signa extends Component {
 
 const mapStateToProps = store => {
   return {
-    singas: store.singas
+    singas: store.singas,
+    isFetched: store.isFetched,
+    isFetching: store.isFetching
   };
 };
 

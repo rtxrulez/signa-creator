@@ -72,7 +72,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case fetchSingaRequest().type:
-      console.log("req", action);
       return {
         ...state,
         isFetched: false,
@@ -96,6 +95,7 @@ export default (state = initialState, action) => {
       };
 
     case uploadSingaRequest().type:
+      console.log("req", action);
       return {
         ...state,
         isFetched: false,
