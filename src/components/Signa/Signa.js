@@ -22,24 +22,24 @@ const defaultTextData = {
   fontSize: 20,
   color: "#000000",
   strokeColor: "#ffffff",
-  rotate: 0,
-  dataBase64: ""
+  rotate: 0
 };
 
 class Signa extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      defaultTextData: { ...defaultTextData },
       selectTextData: {
         // выбранный текст
       },
       selectKey: 0,
-      textList: [{ ...defaultTextData }],
       typeImg: "jpg",
       loadedImage: false,
-      download: false // если нажали на скачать
+      download: false, // если нажали на скачать
+      ...props.oneSinga
     };
+    console.log("fff", this.state);
   }
 
   componentDidMount = () => {
@@ -330,6 +330,7 @@ class Signa extends Component {
 
 const mapStateToProps = store => {
   return {
+    oneSinga: store.oneSinga,
     singas: store.singas,
     isFetched: store.isFetched,
     isFetching: store.isFetching

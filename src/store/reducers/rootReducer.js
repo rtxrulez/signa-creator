@@ -14,7 +14,34 @@ const initialState = {
   isFetched: false,
   isFetching: false,
   error: false,
-  oneSinga: {},
+  oneSinga: {
+    url:
+      "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+    textList: [
+      {
+        text: "Какой то текст1",
+        pos: {
+          x: 170,
+          y: -140
+        },
+        rotate: 92,
+        fontSize: 20,
+        color: "#00ff00",
+        shadow: "#ff0000"
+      },
+      {
+        text: "Какой то текст2",
+        pos: {
+          x: 170,
+          y: -140
+        },
+        rotate: 90,
+        fontSize: 20,
+        color: "#0000ff",
+        shadow: "#ff0000"
+      }
+    ]
+  },
 
   singas: [
     {
