@@ -17,6 +17,7 @@ const initialState = {
   oneSinga: {
     url:
       "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+    // "",
     textList: [
       {
         name: "Какой то текст1",

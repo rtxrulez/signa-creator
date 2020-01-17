@@ -44,6 +44,13 @@ class Signa extends Component {
 
   componentDidMount = () => {
     node = document.getElementById("content");
+    const { url } = this.state;
+
+    if (url !== "") {
+      this.setState({
+        loadedImage: true
+      });
+    }
   };
 
   handleText = e => {
@@ -174,8 +181,6 @@ class Signa extends Component {
   };
 
   render() {
-    let imageUrl = "";
-
     const {
       textList,
       typeImg,
@@ -185,7 +190,6 @@ class Signa extends Component {
       loadedImage,
       download
     } = this.state;
-    console.log("url", url);
 
     const { singas, isFetched, isFetching } = this.props;
 
@@ -205,7 +209,7 @@ class Signa extends Component {
       >
         <div className="signa__content">
           <SignaCreator
-            imageUrl={imageUrl}
+            imageUrl={url}
             textList={textList}
             type={typeImg}
             selectKey={selectKey}
