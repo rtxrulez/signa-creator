@@ -179,26 +179,19 @@ class Signa extends Component {
     const {
       textList,
       typeImg,
+      url,
       selectKey,
       selectTextData,
       loadedImage,
       download
     } = this.state;
+    console.log("url", url);
+
     const { singas, isFetched, isFetching } = this.props;
 
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey
     ];
-
-    let listSignaId = this.props.match.params.id;
-
-    if (listSignaId) {
-      imageUrl = singas[parseInt(listSignaId)].url;
-    } else {
-      console.log("listSignaIdlistSignaId", listSignaId);
-    }
-
-    console.log("isFetched", isFetching);
 
     return (
       <div

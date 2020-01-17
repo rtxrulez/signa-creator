@@ -19,23 +19,23 @@ const initialState = {
       "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
     textList: [
       {
-        text: "Какой то текст1",
+        name: "Какой то текст1",
         pos: {
           x: 170,
           y: -140
         },
-        rotate: 92,
+        rotate: 5,
         fontSize: 20,
-        color: "#00ff00",
+        color: "#00ffff",
         shadow: "#ff0000"
       },
       {
-        text: "Какой то текст2",
+        name: "Какой то текст2",
         pos: {
           x: 170,
           y: -140
         },
-        rotate: 90,
+        rotate: 0,
         fontSize: 20,
         color: "#0000ff",
         shadow: "#ff0000"
