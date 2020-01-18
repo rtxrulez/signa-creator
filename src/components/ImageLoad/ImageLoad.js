@@ -7,7 +7,6 @@ class ImageLoad extends Component {
   };
 
   loadFile = file => {
-    console.log("f", file);
     if (
       file &&
       file.type !== "image/png" &&
@@ -44,9 +43,8 @@ class ImageLoad extends Component {
     const { file } = this.state;
     const { imageUrl } = this.props;
     let statusImageClass = "";
-    console.log("img", this.props);
 
-    if (file === "") {
+    if (file === "" && imageUrl === "") {
       statusImageClass = "noload";
     } else {
       statusImageClass = "load";

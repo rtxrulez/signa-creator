@@ -28,6 +28,7 @@ export function uploadSinga(singaData) {
     //   dispatch(uploadSingaRequest());
     // });
     dispatch(uploadSingaRequest());
+    console.log("s: ", JSON.stringify(singaData));
     setTimeout(() => {
       console.log("loading...");
       dispatch(uploadSingaSuccess());

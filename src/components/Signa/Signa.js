@@ -165,19 +165,17 @@ class Signa extends Component {
   };
 
   save = () => {
-    const typeImg = this.state.typeImg;
+    const { typeImg, url } = this.state;
 
-    ElementToBase64(node, typeImg).then(dataBase64 => {
-      this.setState(
-        {
-          dataBase64: dataBase64
-        },
-        () => {
-          console.log(this.state);
-          this.props.uploadData(this.state);
-        }
-      );
-    });
+    this.setState(
+      {
+        url: url
+      },
+      () => {
+        console.log(this.state);
+        this.props.uploadData(this.state);
+      }
+    );
   };
 
   render() {
