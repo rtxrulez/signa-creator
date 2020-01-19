@@ -21,4 +21,12 @@ module.exports = (app, db) => {
     );
     console.log("ListItem Add!");
   });
+
+  app.get("/getlist", (req, res) => {
+    db.collection(dbConf.singaListCollection)
+      .find()
+      .toArray((err, result) => {
+        res.send(result);
+      });
+  });
 };

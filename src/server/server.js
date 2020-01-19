@@ -9,10 +9,13 @@ const AppRoutes = require("./routes");
 const port = 8000;
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// parse application/json
-app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json({ limit: "100mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 MongoClient.connect(dbConf.url, (err, database) => {
   if (err) return console.log("DB Error: ", err);
