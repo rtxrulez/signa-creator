@@ -28,11 +28,5 @@ export function uploadSinga(singaData) {
     axios.post(`${config.domain}list`, singaData).then(res => {
       dispatch(uploadSingaSuccess());
     });
-
-    // console.log("s: ", JSON.stringify(singaData));
-    // setTimeout(() => {
-    //   console.log("loading...");
-    //   dispatch(uploadSingaSuccess());
-    // }, 300);
   };
 }

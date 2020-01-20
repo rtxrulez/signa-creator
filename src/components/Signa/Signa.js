@@ -190,6 +190,7 @@ class Signa extends Component {
     } = this.state;
 
     const { singas, isFetched, isFetching } = this.props;
+    console.log("this.state.textList", this.state.textList);
 
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey
