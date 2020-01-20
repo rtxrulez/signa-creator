@@ -189,10 +189,7 @@ class Signa extends Component {
       download
     } = this.state;
 
-    console.log("this.props.uploadData", this.props.uploadSinga);
-
     const { isFetched, isFetching } = this.props.uploadSinga;
-    console.log("this.state.textList", this.state.textList);
 
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey

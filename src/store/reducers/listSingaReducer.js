@@ -1,14 +1,13 @@
-import addToListSinga from "../actions/listSingaAction";
+import { addToListSinga } from "../actions/listSingaActions";
 
 let defaultData = [];
 
-export default function uploadReducer(state = defaultData, action) {
+export default (state = defaultData, action) => {
   switch (action.type) {
     case addToListSinga().type:
-      console.log("req", action);
-      return [...state, ...action.payload];
+      return [...action.payload];
 
     default:
       return state;
   }
-}
+};

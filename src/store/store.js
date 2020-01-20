@@ -110,7 +110,7 @@ export default createStore(
   rootReducer,
   initialState,
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, logger),
     window.devToolsExtension ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
   )
 );
