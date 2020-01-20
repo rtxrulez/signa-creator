@@ -5,7 +5,8 @@ let defaultData = {
   loadedImage: true,
   download: false,
   url:
-    "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+    // "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
+    "",
   textList: [
     {
       name: "Текст 1",

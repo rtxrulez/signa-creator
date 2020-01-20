@@ -195,6 +195,8 @@ class Signa extends Component {
       selectKey
     ];
 
+    console.log("ff", loadedImage, download);
+
     return (
       <div
         className={

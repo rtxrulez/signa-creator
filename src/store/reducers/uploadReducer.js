@@ -13,7 +13,6 @@ let defaultData = {
 export default (state = defaultData, action) => {
   switch (action.type) {
     case uploadSingaRequest().type:
-      console.log("req", action);
       return {
         ...state,
         isFetched: false,

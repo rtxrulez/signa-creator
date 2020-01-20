@@ -42,6 +42,7 @@ class ImageLoad extends Component {
   render() {
     const { file } = this.state;
     const { imageUrl } = this.props;
+
     let statusImageClass = "";
 
     if (file === "" && imageUrl === "") {
@@ -49,6 +50,7 @@ class ImageLoad extends Component {
     } else {
       statusImageClass = "load";
     }
+
     return (
       <form className={"imageLoad " + statusImageClass}>
         <div className="imageLoad__content">
@@ -56,22 +58,18 @@ class ImageLoad extends Component {
             <span>Загрузить изображение</span>
             <img src={imageUrl === "" ? file : imageUrl} />
           </div>
-          {imageUrl === "" ? (
-            <div className="imageLoad__inputGroup">
-              <div className="imageLoad__label">
-                <label htmlFor="file" className="imageLoad__add">
-                  +
-                </label>
-                <input type="file" id="file" onChange={this.handleFileLoad} />
-              </div>
-              <button
-                onClick={this.handleDelete}
-                className="imageLoad__delete"
-              ></button>
+          <div className="imageLoad__inputGroup">
+            <div className="imageLoad__label">
+              <label htmlFor="file" className="imageLoad__add">
+                +
+              </label>
+              <input type="file" id="file" onChange={this.handleFileLoad} />
             </div>
-          ) : (
-            undefined
-          )}
+            <button
+              onClick={this.handleDelete}
+              className="imageLoad__delete"
+            ></button>
+          </div>
         </div>
       </form>
     );
