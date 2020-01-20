@@ -189,7 +189,9 @@ class Signa extends Component {
       download
     } = this.state;
 
-    const { singas, isFetched, isFetching } = this.props;
+    console.log("this.props.uploadData", this.props.uploadSinga);
+
+    const { isFetched, isFetching } = this.props.uploadSinga;
     console.log("this.state.textList", this.state.textList);
 
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
@@ -328,8 +330,7 @@ const mapStateToProps = store => {
   return {
     oneSinga: store.oneSinga,
     singas: store.singas,
-    isFetched: store.isFetched,
-    isFetching: store.isFetching
+    uploadSinga: store.uploadSinga
   };
 };
 

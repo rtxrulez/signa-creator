@@ -2,7 +2,7 @@ import {
   loadSingaRequest,
   loadSingaFailure,
   loadSingaSuccess
-} from "../actions/listSingaActions";
+} from "../actions/loadSingaActions";
 
 let defaultData = {
   isFetched: false,
