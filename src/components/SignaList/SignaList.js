@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadList } from "../../store/actions/loadSingaActions";
+import { updateOneSinga } from "../../store/actions/oneSingaActions";
 import "./SignaList.scss";
 
 class SignaList extends Component {
@@ -12,11 +13,18 @@ class SignaList extends Component {
 
   componentDidMount = () => {
     this.props.loadList();
+    console.log("pr", this.props);
+  };
+
+  setOneSinga = oneSinga => {
+    console.log("id", oneSinga);
+    this.props.updateOneSinga(oneSinga);
   };
 
   render() {
     const { singas, loadSinga } = this.props;
     const { isFetched, isFetching } = this.props.loadSinga;
+    console.log("s", singas);
     return (
       <div className="signaList">
         <div className="container signaList__container">
@@ -28,17 +36,26 @@ class SignaList extends Component {
               (isFetched ? " fetched " : "")
             }
           >
-            <ul className="signaList__menu">
-              {singas.map((val, k) => {
-                return (
-                  <li className="signaList__item" key={k}>
-                    <Link to={"/list/" + val.id}>
-                      <img src={val.url} alt={k} />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            {isFetched ? (
+              <ul className="signaList__menu">
+                {singas.map((val, k) => {
+                  return (
+                    <li className="signaList__item" key={k}>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          this.setOneSinga(val);
+                        }}
+                      >
+                        <img src={val.url} alt={k} />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              undefined
+            )}
           </div>
         </div>
       </div>
@@ -55,7 +72,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadList: () => dispatch(loadList())
+    loadList: () => dispatch(loadList()),
+    updateOneSinga: data => dispatch(updateOneSinga(data))
   };
 };
 

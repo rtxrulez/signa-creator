@@ -56,7 +56,7 @@ class ImageLoad extends Component {
         <div className="imageLoad__content">
           <div className="imageLoad__image">
             <span>Загрузить изображение</span>
-            <img src={imageUrl === "" ? file : imageUrl} />
+            <img id="image" src={imageUrl === "" ? file : imageUrl} />
           </div>
           <div className="imageLoad__inputGroup">
             <div className="imageLoad__label">

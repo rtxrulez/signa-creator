@@ -1,3 +1,5 @@
+import { updateOneSinga } from "../actions/oneSingaActions";
+
 let defaultData = {
   selectTextData: {},
   selectKey: 0,
@@ -29,6 +31,10 @@ let defaultData = {
 
 export default function oneSingaReducer(state = defaultData, action) {
   switch (action.type) {
+    case updateOneSinga().type:
+      return {
+        ...action.payload
+      };
     default:
       return state;
   }
