@@ -80,7 +80,7 @@ let f = [
 export function loadList(page) {
   return dispatch => {
     dispatch(loadSingaRequest());
-    axios.get(`${config.domain}getlist`).then(result => {
+    axios.get(`${config.domain}list`).then(result => {
       console.log("res", result.data);
       dispatch(addToListSinga(result.data));
       dispatch(loadSingaSuccess());

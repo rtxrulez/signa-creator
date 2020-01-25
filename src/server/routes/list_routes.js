@@ -22,10 +22,19 @@ module.exports = (app, db) => {
     console.log("ListItem Add!");
   });
 
-  app.get("/getlist", (req, res) => {
+  app.get("/list", (req, res) => {
     db.collection(dbConf.singaListCollection)
       .find()
       .toArray((err, result) => {
+        res.send(result);
+      });
+  });
+
+  app.get("/list/:id", (req, res) => {
+    console.log("req.params.id", req.params.id);
+    db.collection(dbConf.singaListCollection)
+      .findOne({ _id: ObjectID(req.params.id) })
+      .then(result => {
         res.send(result);
       });
   });

@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import SignaCreator from "../SignaCreator/SignaCreator";
-import { ElementToImg, ElementToBase64 } from "../ElementToImg/ElementToImg";
+import { ElementToImg } from "../ElementToImg/ElementToImg";
 import { connect } from "react-redux";
 import { setStorage, getStorage, getStorageState } from "../Storage/storage";
 import {
   uploadSingaRequest,
   uploadSinga
 } from "../../store/actions/uploadSingaActions";
+import { getOneSinga } from "../../store/actions/oneSingaActions";
+
 import "./Signa.scss";
 
 const DEFAULT_TEXT = "Пример текста ";
@@ -29,7 +30,10 @@ class Signa extends Component {
   constructor(props) {
     super(props);
 
+    const id = props.match.params.id ? props.match.params.id : false;
+
     this.state = {
+      id: id,
       selectTextData: {
         // выбранный текст
       },
@@ -39,7 +43,8 @@ class Signa extends Component {
       download: false, // если нажали на скачать
       ...props.oneSinga
     };
-    console.log("fff", this.state);
+    console.log("id: ", id);
+    console.log("props", this.props, "state: ", this.state);
   }
 
   componentDidMount = () => {
@@ -51,6 +56,9 @@ class Signa extends Component {
         loadedImage: true
       });
     }
+
+    console.log("state CDM", this.state);
+    this.props.getOneSinga(this.state.id);
   };
 
   handleText = e => {
@@ -336,7 +344,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    uploadData: singaData => dispatch(uploadSinga(singaData))
+    uploadData: singaData => dispatch(uploadSinga(singaData)),
+    getOneSinga: id => dispatch(getOneSinga(id))
   };
 };
 

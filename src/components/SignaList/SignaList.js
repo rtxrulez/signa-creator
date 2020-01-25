@@ -41,14 +41,9 @@ class SignaList extends Component {
                 {singas.map((val, k) => {
                   return (
                     <li className="signaList__item" key={k}>
-                      <a
-                        href="#"
-                        onClick={() => {
-                          this.setOneSinga(val);
-                        }}
-                      >
+                      <Link to={"list/" + val._id}>
                         <img src={val.url} alt={k} />
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
