@@ -2,10 +2,6 @@ const ObjectID = require("mongodb").ObjectID;
 const dbConf = require("../../config/dbConf");
 
 module.exports = (app, db) => {
-  app.get("/list", (req, res) => {
-    res.send("List route");
-  });
-
   app.post("/list", (req, res) => {
     const listItem = req.body;
 
@@ -25,7 +21,8 @@ module.exports = (app, db) => {
   app.get("/list", (req, res) => {
     db.collection(dbConf.singaListCollection)
       .find()
-      .toArray((err, result) => {
+      .toArray()
+      .then(result => {
         res.send(result);
       });
   });
