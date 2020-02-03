@@ -17,12 +17,20 @@ class SignaContainer extends Component {
     }
   }
 
+  saveSingaInStore = (id, state) => {
+    console.log("save singa in store", id, state);
+    if (id !== "") {
+    }
+  };
+
   render() {
     const { oneSinga } = this.props;
+    const id = this.props.match.params.id ? this.props.match.params.id : false;
     console.log("container props", this.props);
+
     return (
       <div>
-        <Singa {...oneSinga} />
+        <Singa {...oneSinga} id={id} saveSingaInStore={this.saveSingaInStore} />
       </div>
     );
   }

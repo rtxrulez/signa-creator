@@ -35,4 +35,16 @@ module.exports = (app, db) => {
         res.send(result);
       });
   });
+
+  app.post("/list/:id", (req, res) => {
+    const oneSinga = req.body;
+    console.log("req.params.id", req.params.id);
+    res.send("one", oneSinga);
+
+    // db.collection(dbConf.singaListCollection)
+    //   .findOneAndUpdate({ _id: ObjectID(req.params.id) })
+    //   .then(result => {
+    //     res.send(result);
+    //   });
+  });
 };

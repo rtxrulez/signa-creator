@@ -175,15 +175,9 @@ class Signa extends Component {
     const elemImage = document.getElementById("image");
     const imageInUrl = elemImage.getAttribute("src");
 
-    this.setState(
-      {
-        url: imageInUrl
-      },
-      () => {
-        console.log(this.state);
-        this.props.uploadData(this.state);
-      }
-    );
+    console.log("id", this.props.id);
+
+    this.props.saveSingaInStore(this.props.id, this.state);
   };
 
   render() {
