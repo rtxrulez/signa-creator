@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
-import Signa from "./Signa/Signa";
+import SignaContainer from "./Signa/SingaContainer";
 import SignaList from "./SignaList/SignaList";
 import Layout from "./Layout/Layout";
 
@@ -22,7 +22,7 @@ class App extends Component {
           path="/list/:id"
           component={props => (
             <Layout>
-              <Signa {...props} />
+              <SignaContainer {...props} />
             </Layout>
           )}
         />
@@ -38,7 +38,7 @@ class App extends Component {
               path="/"
               render={props => (
                 <Layout>
-                  <Signa {...props} />
+                  <SignaContainer {...props} />
                 </Layout>
               )}
             />

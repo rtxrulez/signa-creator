@@ -14,40 +14,42 @@ import "./Signa.scss";
 const DEFAULT_TEXT = "Пример текста ";
 let node;
 
-const defaultTextData = {
-  name: DEFAULT_TEXT,
-  pos: {
-    x: 170,
-    y: -140
-  },
-  fontSize: 20,
-  color: "#000000",
-  strokeColor: "#ffffff",
-  rotate: 0
-};
+// const defaultTextData = {
+//   name: DEFAULT_TEXT,
+//   pos: {
+//     x: 170,
+//     y: -140
+//   },
+//   fontSize: 20,
+//   color: "#000000",
+//   strokeColor: "#ffffff",
+//   rotate: 0
+// };
 
 class Signa extends Component {
   constructor(props) {
     super(props);
 
-    const id = props.match.params.id ? props.match.params.id : false;
+    console.log("singa props", props);
 
     this.state = {
-      id: id,
+      isDataFull: false,
       selectTextData: {
         // выбранный текст
       },
       selectKey: 0,
       typeImg: "jpg",
       loadedImage: false,
-      download: false, // если нажали на скачать
-      ...props.oneSinga
+      download: false, // если нажали на скачать,
+      ...props
     };
-    console.log("id: ", id);
-    console.log("props", this.props, "state: ", this.state);
   }
 
-  componentDidMount = () => {
+  componentWillReceiveProps(nextProps) {
+    this.setState({ ...nextProps });
+  }
+
+  componentDidMount() {
     node = document.getElementById("content");
     const { url } = this.state;
 
@@ -56,10 +58,7 @@ class Signa extends Component {
         loadedImage: true
       });
     }
-
-    console.log("state CDM", this.state);
-    this.props.getOneSinga(this.state.id);
-  };
+  }
 
   handleText = e => {
     const textList = [...this.state.textList];
@@ -198,22 +197,16 @@ class Signa extends Component {
       download
     } = this.state;
 
-    const { isFetched, isFetching } = this.props.uploadSinga;
-
     let { rotate, fontSize, name, color, strokeColor } = this.state.textList[
       selectKey
     ];
-
-    console.log("ff", loadedImage, download);
 
     return (
       <div
         className={
           "container signa " +
           (loadedImage ? "show" : "hidden") +
-          (download ? " singa-download" : "") +
-          (isFetching ? " fetching " : "") +
-          (isFetched ? " fetched " : "")
+          (download ? " singa-download" : "")
         }
       >
         <div className="signa__content">
@@ -334,19 +327,4 @@ class Signa extends Component {
   }
 }
 
-const mapStateToProps = store => {
-  return {
-    oneSinga: store.oneSinga,
-    singas: store.singas,
-    uploadSinga: store.uploadSinga
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    uploadData: singaData => dispatch(uploadSinga(singaData)),
-    getOneSinga: id => dispatch(getOneSinga(id))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signa);
+export default Signa;

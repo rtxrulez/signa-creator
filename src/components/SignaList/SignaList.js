@@ -24,7 +24,7 @@ class SignaList extends Component {
   render() {
     const { singas, loadSinga } = this.props;
     const { isFetched, isFetching } = this.props.loadSinga;
-    console.log("s", singas);
+
     return (
       <div className="signaList">
         <div className="container signaList__container">

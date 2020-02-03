@@ -6,12 +6,13 @@ let defaultData = {
   typeImg: "jpg",
   loadedImage: true,
   download: false,
+  getServerSinga: true,
   url:
     // "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkcZ-AjJJrTOR0iQewSbnrHqaKTM5SRkZCeTgDn6uOyic",
     "",
   textList: [
     {
-      name: "Текст 1",
+      name: "Текст Какой то",
       pos: { x: 170, y: -140 },
       rotate: 5,
       fontSize: 20,
@@ -33,7 +34,8 @@ export default function oneSingaReducer(state = defaultData, action) {
   switch (action.type) {
     case updateOneSinga().type:
       return {
-        ...action.payload
+        ...action.payload,
+        getServerSinga: false
       };
     default:
       return state;
